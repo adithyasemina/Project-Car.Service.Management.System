@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[Services] (
+    [id]              INT          NOT NULL,
+    [service]         VARCHAR (50) NOT NULL,
+    [vehicleNo]       VARCHAR (50) NOT NULL,
+    [date]            DATETIME     NOT NULL,
+    [serviceProvider] VARCHAR (50) NOT NULL,
+    [status]          VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
