@@ -1,0 +1,18 @@
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\bin\Debug\net8.0-windows\Inventory Data.exe
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\bin\Debug\net8.0-windows\Inventory Data.deps.json
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\bin\Debug\net8.0-windows\Inventory Data.runtimeconfig.json
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\bin\Debug\net8.0-windows\Inventory Data.dll
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\bin\Debug\net8.0-windows\Inventory Data.pdb
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory_Data.Form1.resources
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory_Data.Properties.Resources.resources
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory Data.csproj.GenerateResource.cache
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory Data.AssemblyInfoInputs.cache
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory Data.AssemblyInfo.cs
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory Data.csproj.CoreCompileInputs.cache
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory Data.dll
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\refint\Inventory Data.dll
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory Data.pdb
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory Data.genruntimeconfig.cache
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\ref\Inventory Data.dll
+C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\obj\Debug\net8.0-windows\Inventory_Data.Form2.resources
