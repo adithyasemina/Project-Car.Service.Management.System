@@ -1,0 +1,13 @@
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\bin\Debug\project_nsbm.exe.config
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\bin\Debug\project_nsbm.exe
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\bin\Debug\project_nsbm.pdb
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\obj\Debug\project_nsbm.csproj.AssemblyReference.cache
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\obj\Debug\project_nsbm.Form1.resources
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\obj\Debug\project_nsbm.Properties.Resources.resources
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\obj\Debug\project_nsbm.csproj.GenerateResource.cache
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\obj\Debug\project_nsbm.csproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\obj\Debug\project_nsbm.exe
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\obj\Debug\project_nsbm.pdb
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\obj\Debug\project_nsbm.ADD_Customer.resources
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\bin\Debug\AddcustomerDatabase1.mdf
+C:\Users\pc\source\repos\project_nsbm\project_nsbm\bin\Debug\AddcustomerDatabase1_log.ldf
