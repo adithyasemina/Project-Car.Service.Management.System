@@ -1,0 +1,11 @@
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\bin\Debug\Basic Login Page.exe.config
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\bin\Debug\Basic Login Page.exe
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\bin\Debug\Basic Login Page.pdb
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\obj\Debug\Basic Login Page.csproj.AssemblyReference.cache
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\obj\Debug\Basic_Login_Page.Form1.resources
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\obj\Debug\Basic_Login_Page.Properties.Resources.resources
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\obj\Debug\Basic Login Page.csproj.GenerateResource.cache
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\obj\Debug\Basic Login Page.csproj.CoreCompileInputs.cache
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\obj\Debug\Basic Login Page.exe
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\obj\Debug\Basic Login Page.pdb
+E:\C# Practice\C# Main Assignment\Basic Login Page\Basic Login Page\obj\Debug\Basic_Login_Page.Form2.resources
