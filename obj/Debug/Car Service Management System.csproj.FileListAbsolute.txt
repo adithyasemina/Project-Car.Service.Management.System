@@ -1,0 +1,16 @@
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\bin\Debug\Car Service Management System.exe.config
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\bin\Debug\Car Service Management System.exe
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\bin\Debug\Car Service Management System.pdb
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car Service Management System.csproj.AssemblyReference.cache
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car_Service_Management_System.Properties.Resources.resources
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car Service Management System.csproj.GenerateResource.cache
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car Service Management System.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car Service Management System.exe
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car Service Management System.pdb
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car_Service_Management_System.MainForm.resources
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car_Service_Management_System.Payments.resources
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car_Service_Management_System.ServiceHistory.resources
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car_Service_Management_System.AddService.resources
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\bin\Debug\serviceHistory.mdf
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\bin\Debug\serviceHistory_log.ldf
+C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\obj\Debug\Car_Service_Management_System.Inventory.resources
