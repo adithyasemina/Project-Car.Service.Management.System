@@ -26,6 +26,7 @@ namespace calendar
         {
 
         }
+
         public void days(int numday)
         {
             lbdays.Text = numday+"";

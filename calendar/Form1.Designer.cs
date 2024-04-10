@@ -134,13 +134,13 @@
             // LBDATE
             // 
             this.LBDATE.Font = new System.Drawing.Font("Poppins Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBDATE.Location = new System.Drawing.Point(316, 28);
+            this.LBDATE.Location = new System.Drawing.Point(376, 32);
             this.LBDATE.Name = "LBDATE";
-            this.LBDATE.Size = new System.Drawing.Size(554, 50);
+            this.LBDATE.Size = new System.Drawing.Size(425, 50);
             this.LBDATE.TabIndex = 8;
             this.LBDATE.Text = "MONTH  YEAR";
             this.LBDATE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LBDATE.Click += new System.EventHandler(this.LBDATE_Click);
+           
             // 
             // Form1
             // 
