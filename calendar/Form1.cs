@@ -24,12 +24,24 @@ namespace calendar
         private void displaydays()
         {
             DateTime now = DateTime.Now;
+
             // Getting first day of the month
             DateTime startofthemonth = new DateTime(now.Year,now.Month,1);
+
             // Getting the count of the days of the month
             int days=DateTime.DaysInMonth(now.Year,now.Month);
+
             //converting the start of the month in to the integer 
-            int daysofthenewweek=Convert.ToInt32(startofthemonth.DayOfWeek.ToString("d"));
+            int daysoftheweek = Convert.ToInt32(startofthemonth.DayOfWeek.ToString("d"))+1;
+
+            //Creating blank user control 
+            for (int i = 1; i < daysoftheweek; i++)
+            {
+                UserControlBlank ucblank = new UserControlBlank();
+                daycontainer.Controls.Add(ucblank);
+            }
+            //Creating user controll for days
+
         }
     }
 }
