@@ -28,7 +28,7 @@ namespace calendar
             DateTime now = DateTime.Now;
             month = now.Month;
             year = now.Year;
-            string monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
+            string monthname = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
             LBDATE.Text = monthname + "" + year;
 
             // Getting first day of the month
@@ -91,6 +91,11 @@ namespace calendar
             }
         }
 
+        private void LBDATE_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnnext_Click(object sender, EventArgs e)
         {
             //clearing container
@@ -110,10 +115,13 @@ namespace calendar
             int days = DateTime.DaysInMonth(year, month);
 
             //converting the start of the month in to the integer 
-            int daysoftheweek = Convert.ToInt32(startofthemonth.DayOfWeek.ToString("d")); 
+            int daysOfWeek = (int)startofthemonth.DayOfWeek;
 
-            //Creating blank user control 
-            for (int i = 1; i < daysoftheweek; i++)
+            // Adjusting days of the week to start from Monday as 1
+            daysOfWeek = (daysOfWeek == 0) ? 7 : daysOfWeek;
+
+            // Creating blank user controls for days before the first day of the month
+            for (int i = 1; i < daysOfWeek; i++)
             {
                 UserControlBlank ucblank = new UserControlBlank();
                 daycontainer.Controls.Add(ucblank);

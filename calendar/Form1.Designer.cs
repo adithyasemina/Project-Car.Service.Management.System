@@ -45,12 +45,12 @@
             // 
             this.daycontainer.Location = new System.Drawing.Point(12, 179);
             this.daycontainer.Name = "daycontainer";
-            this.daycontainer.Size = new System.Drawing.Size(1142, 547);
+            this.daycontainer.Size = new System.Drawing.Size(1141, 664);
             this.daycontainer.TabIndex = 0;
             // 
             // btnnext
             // 
-            this.btnnext.Location = new System.Drawing.Point(1038, 752);
+            this.btnnext.Location = new System.Drawing.Point(1056, 865);
             this.btnnext.Name = "btnnext";
             this.btnnext.Size = new System.Drawing.Size(75, 23);
             this.btnnext.TabIndex = 0;
@@ -60,7 +60,7 @@
             // 
             // btnprevious
             // 
-            this.btnprevious.Location = new System.Drawing.Point(957, 752);
+            this.btnprevious.Location = new System.Drawing.Point(975, 865);
             this.btnprevious.Name = "btnprevious";
             this.btnprevious.Size = new System.Drawing.Size(75, 23);
             this.btnprevious.TabIndex = 1;
@@ -138,15 +138,16 @@
             this.LBDATE.Name = "LBDATE";
             this.LBDATE.Size = new System.Drawing.Size(554, 50);
             this.LBDATE.TabIndex = 8;
-            this.LBDATE.Text = "MONTH YEAR";
+            this.LBDATE.Text = "MONTH  YEAR";
             this.LBDATE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LBDATE.Click += new System.EventHandler(this.LBDATE_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(1165, 796);
+            this.ClientSize = new System.Drawing.Size(1165, 909);
             this.Controls.Add(this.LBDATE);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
