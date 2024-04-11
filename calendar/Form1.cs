@@ -28,6 +28,8 @@ namespace calendar
             DateTime now = DateTime.Now;
             month = now.Month;
             year = now.Year;
+
+            // Set the month name and year to the 'LBDATE' label
             string monthname = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
             LBDATE.Text = monthname + " " + year;
 
@@ -46,6 +48,7 @@ namespace calendar
                 UserControlBlank ucblank = new UserControlBlank();
                 daycontainer.Controls.Add(ucblank);
             }
+
             //Creating user controll for days
             for (int i = 1; i <= days; i++)
             {
@@ -70,9 +73,9 @@ namespace calendar
                 year--;
             }
 
+            // Set the month name and year to the 'LBDATE' label
             string monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
             LBDATE.Text = monthname + " " + year;
-
 
             // Getting first day of the month
             DateTime startofthemonth = new DateTime(year, month, 1);
@@ -92,6 +95,7 @@ namespace calendar
                 UserControlBlank ucblank = new UserControlBlank();
                 daycontainer.Controls.Add(ucblank);
             }
+
             //Creating user controll for days
             for (int i = 1; i <= days; i++)
             {
@@ -116,6 +120,7 @@ namespace calendar
                 year++;
             }
 
+            // Set the month name and year to the 'LBDATE' label
             string monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
             LBDATE.Text = monthname + " " + year;
 
@@ -138,6 +143,7 @@ namespace calendar
                 UserControlBlank ucblank = new UserControlBlank();
                 daycontainer.Controls.Add(ucblank);
             }
+
             //Creating user controll for days
             for (int i = 1; i <= days; i++)
             {

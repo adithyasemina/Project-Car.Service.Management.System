@@ -133,7 +133,7 @@
             // 
             // LBDATE
             // 
-            this.LBDATE.Font = new System.Drawing.Font("Poppins Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBDATE.Font = new System.Drawing.Font("Constantia", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBDATE.Location = new System.Drawing.Point(376, 32);
             this.LBDATE.Name = "LBDATE";
             this.LBDATE.Size = new System.Drawing.Size(425, 50);
