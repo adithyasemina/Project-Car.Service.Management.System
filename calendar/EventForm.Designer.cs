@@ -39,7 +39,7 @@
             // 
             this.txdate.Enabled = false;
             this.txdate.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txdate.Location = new System.Drawing.Point(97, 73);
+            this.txdate.Location = new System.Drawing.Point(94, 80);
             this.txdate.Name = "txdate";
             this.txdate.Size = new System.Drawing.Size(261, 28);
             this.txdate.TabIndex = 0;
@@ -47,7 +47,7 @@
             // txvehicle
             // 
             this.txvehicle.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txvehicle.Location = new System.Drawing.Point(97, 154);
+            this.txvehicle.Location = new System.Drawing.Point(94, 150);
             this.txvehicle.Name = "txvehicle";
             this.txvehicle.Size = new System.Drawing.Size(261, 28);
             this.txvehicle.TabIndex = 1;
@@ -55,7 +55,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(94, 57);
+            this.label1.Location = new System.Drawing.Point(91, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 2;
@@ -64,7 +64,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(94, 138);
+            this.label2.Location = new System.Drawing.Point(91, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 13);
             this.label2.TabIndex = 3;
@@ -84,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 289);
+            this.ClientSize = new System.Drawing.Size(450, 289);
             this.Controls.Add(this.btnsave);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

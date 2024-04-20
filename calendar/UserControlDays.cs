@@ -16,6 +16,8 @@ namespace calendar
         {
             InitializeComponent();
         }
+        //creating another static variable for day
+        public static string static_day;
 
         private void lbdays_Click(object sender, EventArgs e)
         {
@@ -30,6 +32,13 @@ namespace calendar
         public void days(int numday)
         {
             lbdays.Text = numday+"";
+        }
+
+        private void UserControlDays_Click(object sender, EventArgs e)
+        {
+            static_day = lbdays.Text;
+            EventForm eventForm = new EventForm();
+            eventForm.Show();
         }
     }
 }

@@ -14,6 +14,9 @@ namespace calendar
     public partial class Form1 : Form
     {
         int month, year;
+        //creating static variable for pass to another form for month and year
+        public static int static_month, static_year;
+
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +35,9 @@ namespace calendar
             // Set the month name and year to the 'LBDATE' label
             string monthname = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
             LBDATE.Text = monthname + " " + year;
+
+            static_month = month;
+            static_year = year;
 
             // Getting first day of the month
             DateTime startofthemonth = new DateTime(year, month, 1);
@@ -65,6 +71,9 @@ namespace calendar
 
             //decrementing month to go to previous month
             month--;
+
+            static_month = month;
+            static_year = year;
 
             //To go to previous year
             if (month < 1)
@@ -112,6 +121,9 @@ namespace calendar
 
             //Incrementing month to go to next month
             month++;
+
+            static_month = month;
+            static_year = year;
 
             //To go to upcomming year
             if (month > 12)
