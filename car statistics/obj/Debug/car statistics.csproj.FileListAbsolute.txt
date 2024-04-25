@@ -1,0 +1,7 @@
+C:\Users\athiq\Desktop\car statistics\bin\Debug\car statistics.exe.config
+C:\Users\athiq\Desktop\car statistics\bin\Debug\car statistics.exe
+C:\Users\athiq\Desktop\car statistics\bin\Debug\car statistics.pdb
+C:\Users\athiq\Desktop\car statistics\obj\Debug\car statistics.csproj.AssemblyReference.cache
+C:\Users\athiq\Desktop\car statistics\obj\Debug\car statistics.csproj.CoreCompileInputs.cache
+C:\Users\athiq\Desktop\car statistics\obj\Debug\car statistics.exe
+C:\Users\athiq\Desktop\car statistics\obj\Debug\car statistics.pdb
