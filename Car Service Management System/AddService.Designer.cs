@@ -55,7 +55,7 @@ namespace Car_Service_Management_System
             this.txtId.Location = new System.Drawing.Point(396, 158);
             this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(243, 31);
+            this.txtId.Size = new System.Drawing.Size(577, 31);
             this.txtId.TabIndex = 32;
             // 
             // lblId
@@ -102,7 +102,7 @@ namespace Car_Service_Management_System
             this.label7.Location = new System.Drawing.Point(132, 88);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(113, 35);
+            this.label7.Size = new System.Drawing.Size(107, 32);
             this.label7.TabIndex = 28;
             this.label7.Text = "Services";
             // 

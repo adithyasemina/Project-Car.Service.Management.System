@@ -82,6 +82,12 @@
     <Compile Include="Calender.Designer.cs">
       <DependentUpon>Calender.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,12 @@
     </Compile>
     <Compile Include="Employee Details Landing Page.Designer.cs">
       <DependentUpon>Employee Details Landing Page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventForm.Designer.cs">
+      <DependentUpon>EventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Expense Details.cs">
       <SubType>Form</SubType>
@@ -140,6 +152,15 @@
     <Compile Include="Vehicle Details Landing Page.Designer.cs">
       <DependentUpon>Vehicle Details Landing Page.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddService.resx">
+      <DependentUpon>AddService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee.resx">
+      <DependentUpon>Employee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +173,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vehicle Details Landing Page.resx">
+      <DependentUpon>Vehicle Details Landing Page.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -166,6 +190,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Adithya\icons8-dashboard-30.png" />
+    <Content Include="Resources\Adithya\icons8-info-30.png" />
+    <Content Include="Resources\Adithya\icons8-monzo-100.png" />
     <Content Include="Resources\Manodya\bell-solid.png" />
     <Content Include="Resources\Manodya\business-time-solid.png" />
     <Content Include="Resources\Manodya\car-rear-solid.png" />
@@ -182,6 +209,15 @@
     <Content Include="Resources\Manodya\user-solid %282%291.png" />
     <Content Include="Resources\Manodya\users-solid.png" />
     <Content Include="Resources\Manodya\wrench-solid.png" />
+    <Content Include="Resources\Nipun\162-1627477_number-of-employees-icon.png" />
+    <Content Include="Resources\Nipun\355-3559362_add-employee-icon-png.png" />
+    <Content Include="Resources\Nipun\355-3559362_add-employee-icon-png1.png" />
+    <Content Include="Resources\Nipun\employee-icon-png-22.jpg" />
+    <Content Include="Resources\Nipun\icon-employee-8.jpg" />
+    <Content Include="Resources\Nipun\OIP %282%29.jpg" />
+    <Content Include="Resources\Nipun\OIP %283%29.jpg" />
+    <Content Include="Resources\Nipun\R %281%29.jpg" />
+    <Content Include="Resources\Nipun\R.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Ayeshi\" />

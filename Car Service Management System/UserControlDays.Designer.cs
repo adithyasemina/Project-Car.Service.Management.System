@@ -35,10 +35,10 @@ namespace Car_Service_Management_System
             // lbdays
             // 
             this.lbdays.AutoSize = true;
-            this.lbdays.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbdays.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbdays.Location = new System.Drawing.Point(20, 14);
             this.lbdays.Name = "lbdays";
-            this.lbdays.Size = new System.Drawing.Size(28, 18);
+            this.lbdays.Size = new System.Drawing.Size(26, 18);
             this.lbdays.TabIndex = 0;
             this.lbdays.Text = "00";
             this.lbdays.Click += new System.EventHandler(this.lbdays_Click);
@@ -52,6 +52,7 @@ namespace Car_Service_Management_System
             this.Name = "UserControlDays";
             this.Size = new System.Drawing.Size(156, 100);
             this.Load += new System.EventHandler(this.UserControlDays_Load);
+            this.Click += new System.EventHandler(this.UserControlDays_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

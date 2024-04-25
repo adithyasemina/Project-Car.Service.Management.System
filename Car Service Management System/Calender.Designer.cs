@@ -71,7 +71,7 @@ namespace Car_Service_Management_System
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Poppins Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(48, 126);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 28);
@@ -80,7 +80,7 @@ namespace Car_Service_Management_System
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Poppins Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(213, 126);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 28);
@@ -89,7 +89,7 @@ namespace Car_Service_Management_System
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Poppins Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(361, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 28);
@@ -98,7 +98,7 @@ namespace Car_Service_Management_System
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Poppins Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(534, 126);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 28);
@@ -107,7 +107,7 @@ namespace Car_Service_Management_System
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("Poppins Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(702, 126);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 28);
@@ -116,7 +116,7 @@ namespace Car_Service_Management_System
             // 
             // label6
             // 
-            this.label6.Font = new System.Drawing.Font("Poppins Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(851, 126);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 28);
@@ -125,7 +125,7 @@ namespace Car_Service_Management_System
             // 
             // label7
             // 
-            this.label7.Font = new System.Drawing.Font("Poppins Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(1018, 126);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 28);
@@ -134,14 +134,13 @@ namespace Car_Service_Management_System
             // 
             // LBDATE
             // 
-            this.LBDATE.Font = new System.Drawing.Font("Poppins Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBDATE.Location = new System.Drawing.Point(316, 28);
+            this.LBDATE.Font = new System.Drawing.Font("Constantia", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBDATE.Location = new System.Drawing.Point(376, 32);
             this.LBDATE.Name = "LBDATE";
-            this.LBDATE.Size = new System.Drawing.Size(554, 50);
+            this.LBDATE.Size = new System.Drawing.Size(425, 50);
             this.LBDATE.TabIndex = 8;
             this.LBDATE.Text = "MONTH  YEAR";
             this.LBDATE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LBDATE.Click += new System.EventHandler(this.LBDATE_Click);
             // 
             // Calender
             // 
@@ -163,7 +162,7 @@ namespace Car_Service_Management_System
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Calender";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Calender ";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Calender_Load);
             this.ResumeLayout(false);
 

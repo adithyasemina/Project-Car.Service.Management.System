@@ -70,12 +70,11 @@ namespace Car_Service_Management_System
             this.panel1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.Location = new System.Drawing.Point(-7, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(814, 79);
+            this.panel1.Size = new System.Drawing.Size(808, 82);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            //this.pictureBox1.BackgroundImage = global::Employee_Details.Properties.Resources.OIP__2_;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(240, 8);
             this.pictureBox1.Name = "pictureBox1";
@@ -149,7 +148,7 @@ namespace Car_Service_Management_System
             // 
             this.button2.BackColor = System.Drawing.Color.Yellow;
             this.button2.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(586, 202);
+            this.button2.Location = new System.Drawing.Point(588, 202);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 55);
             this.button2.TabIndex = 17;
@@ -171,7 +170,6 @@ namespace Car_Service_Management_System
             // 
             // pictureBox2
             // 
-            //this.pictureBox2.BackgroundImage = global::Employee_Details.Properties.Resources.icon_employee_8;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Location = new System.Drawing.Point(479, 43);
             this.pictureBox2.Name = "pictureBox2";
@@ -329,6 +327,7 @@ namespace Car_Service_Management_System
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Employee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee";

@@ -8,3 +8,17 @@ E:\C# Practice\Car Service Management System\Car Service Management System\obj\D
 E:\C# Practice\Car Service Management System\Car Service Management System\obj\Debug\Car Service Management System.csproj.CoreCompileInputs.cache
 E:\C# Practice\Car Service Management System\Car Service Management System\obj\Debug\Car Service Management System.exe
 E:\C# Practice\Car Service Management System\Car Service Management System\obj\Debug\Car Service Management System.pdb
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\bin\Debug\Car Service Management System.exe.config
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\bin\Debug\Car Service Management System.exe
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\bin\Debug\Car Service Management System.pdb
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car Service Management System.csproj.AssemblyReference.cache
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car_Service_Management_System.Form1.resources
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car_Service_Management_System.Properties.Resources.resources
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car_Service_Management_System.Vehicle_Details_Landing_Page.resources
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car Service Management System.csproj.GenerateResource.cache
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car Service Management System.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car Service Management System.exe
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car Service Management System.pdb
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car_Service_Management_System.Dashboard.resources
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car_Service_Management_System.Employee.resources
+C:\Users\ASUS\Desktop\Project-Car\Car Service Management System\obj\Debug\Car_Service_Management_System.AddService.resources
