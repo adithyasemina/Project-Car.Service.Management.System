@@ -13,7 +13,7 @@ namespace Car_Service_Management_System
 {
     public partial class Expense_Details : Form
     {
-        string stringConnection = "@Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\C# module\\Expenses Details\\Expenses Details\\Expenses.mdf\";Integrated Security=True;Connect Timeout=30";
+        string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30";
 
         public Expense_Details()
         {
@@ -38,7 +38,7 @@ namespace Car_Service_Management_System
             {
                 connect.Open();
 
-                string selectData = "SELECT category FROM categories WHERE type = @type AND status = @status";
+                string selectData = "SELECT category FROM expenseCategories WHERE type = @type AND status = @status";
 
                 using (SqlCommand cmd = new SqlCommand(selectData, connect))
                 {
@@ -127,8 +127,8 @@ namespace Car_Service_Management_System
                 {
                     connect.Open();
 
-                    string insertData = "INSERT INTO income (category, item, description, date_income,date_insert)" +
-                        "VALUES(@cat,@item,@income,@desc,@date_in, @date)";
+                    string insertData = "INSERT INTO Income (incomeId, category, item, cost, description, date_income,date_insert)" +
+                        "VALUES(@id, @cat,@item,@income,@desc,@date_in, @date)";
 
                     using (SqlCommand cmd = new SqlCommand(insertData, connect))
                     {
@@ -136,8 +136,8 @@ namespace Car_Service_Management_System
                         cmd.Parameters.AddWithValue("@item", Itemtxt.Text);
                         cmd.Parameters.AddWithValue("@income", Costtxt.Text);
                         cmd.Parameters.AddWithValue("@desc", Descriptiontxt.Text);
-                        cmd.Parameters.AddWithValue("@date_in", Datetxt.Text);
-                        cmd.Parameters.AddWithValue("@date", Datetxt.Value);
+                        cmd.Parameters.AddWithValue("@date_in", Datetxt.Value); 
+                        //cmd.Parameters.AddWithValue("@date", Datetxt.Value);
                         cmd.Parameters.AddWithValue("@id", getId);
 
                         DateTime today = DateTime.Now;
@@ -172,7 +172,7 @@ namespace Car_Service_Management_System
                     {
                         connect.Open();
 
-                        string updateData = "UPDATE incme SET category = @cat, item = @item, income = @income, description = @desc, date_income = @date_in WHERE id = @id ";
+                        string updateData = "UPDATE Income SET category = @cat, item = @item, income = @income, description = @desc, date_income = @date_in, date_insert = @date WHERE incomeId = @id ";
 
                         using (SqlCommand cmd = new SqlCommand(updateData, connect))
                         {
@@ -180,8 +180,11 @@ namespace Car_Service_Management_System
                             cmd.Parameters.AddWithValue("@item", Itemtxt.Text);
                             cmd.Parameters.AddWithValue("@income", Costtxt.Text);
                             cmd.Parameters.AddWithValue("@desc", Descriptiontxt.Text);
-                            cmd.Parameters.AddWithValue("@date", Datetxt.Value);
+                            cmd.Parameters.AddWithValue("@date_in", Datetxt.Value);
                             cmd.Parameters.AddWithValue("@id", getId);
+
+                            DateTime today = DateTime.Now;
+                            cmd.Parameters.AddWithValue("@date", today);
 
 
                             cmd.ExecuteNonQuery();
@@ -217,20 +220,11 @@ namespace Car_Service_Management_System
                     {
                         connect.Open();
 
-                        string insertData = "DELETE FROM income WHERE id = @id";
+                        string insertData = "DELETE FROM Income WHERE incomeId = @id";
 
                         using (SqlCommand cmd = new SqlCommand(insertData, connect))
                         {
-                            cmd.Parameters.AddWithValue("@cat", Categorytxt.SelectedText);
-                            cmd.Parameters.AddWithValue("@item", Itemtxt.Text);
-                            cmd.Parameters.AddWithValue("@cost", Costtxt.Text);
-                            cmd.Parameters.AddWithValue("@desc", Descriptiontxt.Text);
-                            cmd.Parameters.AddWithValue("@date_in", Datetxt.Text);
-                            cmd.Parameters.AddWithValue("@date", Datetxt.Value);
                             cmd.Parameters.AddWithValue("@id", getId);
-
-                            DateTime today = DateTime.Now;
-                            cmd.Parameters.AddWithValue("@date", today);
 
                             cmd.ExecuteNonQuery();
                             clearFields();

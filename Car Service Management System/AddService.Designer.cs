@@ -52,16 +52,16 @@ namespace Car_Service_Management_System
             // txtId
             // 
             this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtId.Location = new System.Drawing.Point(396, 158);
+            this.txtId.Location = new System.Drawing.Point(334, 109);
             this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(577, 31);
+            this.txtId.Size = new System.Drawing.Size(461, 31);
             this.txtId.TabIndex = 32;
             // 
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(187, 165);
+            this.lblId.Location = new System.Drawing.Point(125, 116);
             this.lblId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(29, 24);
@@ -73,10 +73,10 @@ namespace Car_Service_Management_System
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Black;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(828, 663);
+            this.btnDelete.Location = new System.Drawing.Point(522, 479);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(145, 58);
+            this.btnDelete.Size = new System.Drawing.Size(124, 43);
             this.btnDelete.TabIndex = 30;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -86,10 +86,10 @@ namespace Car_Service_Management_System
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Black;
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(650, 663);
+            this.btnUpdate.Location = new System.Drawing.Point(671, 479);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(145, 58);
+            this.btnUpdate.Size = new System.Drawing.Size(124, 43);
             this.btnUpdate.TabIndex = 29;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -99,44 +99,45 @@ namespace Car_Service_Management_System
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(132, 88);
+            this.label7.Location = new System.Drawing.Point(71, 34);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 32);
             this.label7.TabIndex = 28;
             this.label7.Text = "Services";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // txtSProvider
             // 
             this.txtSProvider.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSProvider.Location = new System.Drawing.Point(396, 554);
+            this.txtSProvider.Location = new System.Drawing.Point(334, 399);
             this.txtSProvider.Margin = new System.Windows.Forms.Padding(4);
             this.txtSProvider.Name = "txtSProvider";
-            this.txtSProvider.Size = new System.Drawing.Size(577, 31);
+            this.txtSProvider.Size = new System.Drawing.Size(461, 31);
             this.txtSProvider.TabIndex = 26;
             // 
             // txtVehicleNo
             // 
             this.txtVehicleNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtVehicleNo.Location = new System.Drawing.Point(396, 299);
+            this.txtVehicleNo.Location = new System.Drawing.Point(334, 207);
             this.txtVehicleNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtVehicleNo.Name = "txtVehicleNo";
-            this.txtVehicleNo.Size = new System.Drawing.Size(577, 31);
+            this.txtVehicleNo.Size = new System.Drawing.Size(461, 31);
             this.txtVehicleNo.TabIndex = 25;
             // 
             // txtService
             // 
             this.txtService.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtService.Location = new System.Drawing.Point(396, 233);
+            this.txtService.Location = new System.Drawing.Point(334, 159);
             this.txtService.Margin = new System.Windows.Forms.Padding(4);
             this.txtService.Name = "txtService";
-            this.txtService.Size = new System.Drawing.Size(577, 31);
+            this.txtService.Size = new System.Drawing.Size(461, 31);
             this.txtService.TabIndex = 24;
             // 
             // lblBrand
             // 
             this.lblBrand.AutoSize = true;
-            this.lblBrand.Location = new System.Drawing.Point(188, 368);
+            this.lblBrand.Location = new System.Drawing.Point(126, 257);
             this.lblBrand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBrand.Name = "lblBrand";
             this.lblBrand.Size = new System.Drawing.Size(57, 24);
@@ -146,7 +147,7 @@ namespace Car_Service_Management_System
             // lblSProvider
             // 
             this.lblSProvider.AutoSize = true;
-            this.lblSProvider.Location = new System.Drawing.Point(184, 556);
+            this.lblSProvider.Location = new System.Drawing.Point(122, 401);
             this.lblSProvider.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSProvider.Name = "lblSProvider";
             this.lblSProvider.Size = new System.Drawing.Size(143, 24);
@@ -156,7 +157,7 @@ namespace Car_Service_Management_System
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(187, 492);
+            this.lblDate.Location = new System.Drawing.Point(125, 351);
             this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(49, 24);
@@ -165,16 +166,16 @@ namespace Car_Service_Management_System
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(396, 492);
+            this.dateTimePicker1.Location = new System.Drawing.Point(334, 351);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(577, 31);
+            this.dateTimePicker1.Size = new System.Drawing.Size(461, 31);
             this.dateTimePicker1.TabIndex = 20;
             // 
             // lblVehicleNo
             // 
             this.lblVehicleNo.AutoSize = true;
-            this.lblVehicleNo.Location = new System.Drawing.Point(184, 301);
+            this.lblVehicleNo.Location = new System.Drawing.Point(122, 209);
             this.lblVehicleNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVehicleNo.Name = "lblVehicleNo";
             this.lblVehicleNo.Size = new System.Drawing.Size(97, 24);
@@ -184,7 +185,7 @@ namespace Car_Service_Management_System
             // lblService
             // 
             this.lblService.AutoSize = true;
-            this.lblService.Location = new System.Drawing.Point(187, 240);
+            this.lblService.Location = new System.Drawing.Point(125, 166);
             this.lblService.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblService.Name = "lblService";
             this.lblService.Size = new System.Drawing.Size(71, 24);
@@ -195,10 +196,10 @@ namespace Car_Service_Management_System
             // 
             this.btnInsert.BackColor = System.Drawing.Color.Black;
             this.btnInsert.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnInsert.Location = new System.Drawing.Point(188, 663);
+            this.btnInsert.Location = new System.Drawing.Point(130, 478);
             this.btnInsert.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(136, 59);
+            this.btnInsert.Size = new System.Drawing.Size(115, 44);
             this.btnInsert.TabIndex = 17;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = false;
@@ -207,25 +208,25 @@ namespace Car_Service_Management_System
             // txtModel
             // 
             this.txtModel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtModel.Location = new System.Drawing.Point(396, 432);
+            this.txtModel.Location = new System.Drawing.Point(334, 303);
             this.txtModel.Margin = new System.Windows.Forms.Padding(4);
             this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(577, 31);
+            this.txtModel.Size = new System.Drawing.Size(461, 31);
             this.txtModel.TabIndex = 33;
             // 
             // txtBrand
             // 
             this.txtBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBrand.Location = new System.Drawing.Point(396, 366);
+            this.txtBrand.Location = new System.Drawing.Point(334, 255);
             this.txtBrand.Margin = new System.Windows.Forms.Padding(4);
             this.txtBrand.Name = "txtBrand";
-            this.txtBrand.Size = new System.Drawing.Size(577, 31);
+            this.txtBrand.Size = new System.Drawing.Size(461, 31);
             this.txtBrand.TabIndex = 34;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(184, 434);
+            this.label1.Location = new System.Drawing.Point(122, 305);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 24);
@@ -237,7 +238,7 @@ namespace Car_Service_Management_System
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1118, 830);
+            this.ClientSize = new System.Drawing.Size(956, 578);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBrand);
             this.Controls.Add(this.txtModel);
@@ -259,7 +260,8 @@ namespace Car_Service_Management_System
             this.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddService";
-            this.Text = "Brand";
+            this.Text = "Services Data";
+            this.Load += new System.EventHandler(this.AddService_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

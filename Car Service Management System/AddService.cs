@@ -20,6 +20,7 @@ namespace Car_Service_Management_System
             InitializeComponent();
         }
 
+
         private void lblId_Click(object sender, EventArgs e)
         {
 
@@ -102,6 +103,16 @@ namespace Car_Service_Management_System
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void AddService_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
