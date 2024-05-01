@@ -130,7 +130,7 @@ namespace Car_Service_Management_System
         {
             con.Open();
 
-            SqlCommand cnn = new SqlCommand($"DELETE FROM [Table] WHERE id = {selectedId}", con);
+            SqlCommand cnn = new SqlCommand($"DELETE FROM [employeeDetail] WHERE EmpId = {selectedId}", con);
 
             // Brian: Checks amount of rows affected by query
             int rowsAffected = cnn.ExecuteNonQuery();
@@ -164,7 +164,7 @@ namespace Car_Service_Management_System
                 DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
 
                 // Converting and storing value of 1st row into "id" varible
-                int id = Convert.ToInt32(selectedRow.Cells["Id"].Value);
+                int id = Convert.ToInt32(selectedRow.Cells["Empid"].Value);
 
                 MessageBox.Show("Clicked " + id.ToString());
                 selectedId = id;
