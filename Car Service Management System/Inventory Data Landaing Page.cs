@@ -35,7 +35,7 @@ namespace Car_Service_Management_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 In = new Form2();
+            Add_Inventory_Data In = new Add_Inventory_Data();
             In.Show();
 
         }
@@ -48,7 +48,7 @@ namespace Car_Service_Management_System
         private void
             btnaddproduct_Click(object sender, EventArgs e)
         {
-            Form2 ad = new Form2();
+            Add_Inventory_Data ad = new Add_Inventory_Data();
             ad.Show();
         }
         private void btndelete_Click(object sender, EventArgs e)
@@ -67,11 +67,11 @@ namespace Car_Service_Management_System
         private void Inventory_Data_Landaing_Page_Load(object sender, EventArgs e)
         {
             panel3.Visible = false;
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLocalDB;AttachDbFilename=C:\Users\pc\source\repos\project_nsbm\project_nsbm\AddcustomerDatabase1.mdf;IntegratedSecurity=True");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
-            cmd.CommandText = "select * from";
+            cmd.CommandText = "select * from inventoryData";
             SqlDataAdapter DA = new SqlDataAdapter(cmd);
             DataSet DS = new DataSet();
             DA.Fill(DS);
@@ -83,7 +83,7 @@ namespace Car_Service_Management_System
         {
             if (textBox1.Text != "")
             {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLocalDB;AttachDbFilename=C:\Users\pc\source\repos\project_nsbm\project_nsbm\AddcustomerDatabase1.mdf;IntegratedSecurity=True");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -95,10 +95,10 @@ namespace Car_Service_Management_System
             }
             else
             {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pc\source\repos\project_nsbm\project_nsbm\AddcustomerDatabase1.mdf;Integrated Security=True");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "select * from Table";
+                cmd.CommandText = "select * from inventoryData";
                 SqlDataAdapter DA = new SqlDataAdapter(cmd);
                 DataSet DS = new DataSet();
                 DA.Fill(DS);
@@ -117,10 +117,10 @@ namespace Car_Service_Management_System
             }
 
             panel3.Visible = true;
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\pc\source\repos\project_nsbm\project_nsbm\AddcustomerDatabase1.mdf;Integrated Security=True");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = "select * from Table";
+            cmd.CommandText = "select * from inventoryData";
             SqlDataAdapter DA = new SqlDataAdapter(cmd);
             DataSet DS = new DataSet();
             DA.Fill(DS);
@@ -147,7 +147,9 @@ namespace Car_Service_Management_System
             string maintaincost = txtmaintaincost.Text;
             string date = dateTimePicker1.Text;
             if (MessageBox.Show("Data will be Updedated.Confirm?", "succses", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
 
+            }
 
         }
 

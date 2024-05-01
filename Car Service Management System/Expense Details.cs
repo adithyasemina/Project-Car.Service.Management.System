@@ -13,7 +13,7 @@ namespace Car_Service_Management_System
 {
     public partial class Expense_Details : Form
     {
-        string stringConnection = "@Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\C# module\\Expenses Details\\Expenses Details\\Expenses.mdf\";Integrated Security=True;Connect Timeout=30";
+        string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True";
 
         public Expense_Details()
         {
@@ -38,7 +38,7 @@ namespace Car_Service_Management_System
             {
                 connect.Open();
 
-                string selectData = "SELECT category FROM categories WHERE type = @type AND status = @status";
+                string selectData = "SELECT category FROM expenseCategories WHERE type = @type AND status = @status";
 
                 using (SqlCommand cmd = new SqlCommand(selectData, connect))
                 {
@@ -97,20 +97,43 @@ namespace Car_Service_Management_System
         }
 
         private int getId = 0;
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /* Brian : This event is not working
+         *          The "Datetxt.Value" line also gives an error stating string isn't in proper format.
+                        -Try to change the string from DD/MM/YYYY to YYYY/MM/DD 
+                        -Else try to get only id column and fill the textboxes with values from the database.   */
+
+        // Variable to store selected row
+        int selectedId = 0;
+
+        //Method to capture selected row
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (e.RowIndex != -1)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
 
-                getId = (int)row.Cells[0].Value;
-                Categorytxt.SelectedItem = row.Cells[1].Value.ToString();
-                Itemtxt.Text = row.Cells[2].Value.ToString();
-                Costtxt.Text = row.Cells[3].Value.ToString();
-                Descriptiontxt.Text = row.Cells[4].Value.ToString();
-                Datetxt.Value = Convert.ToDateTime(row.Cells[5].Value.ToString());
+                selectedId = Convert.ToInt32(selectedRow.Cells["Id"].Value);
 
+                // MessageBox.Show("Clicked " + selectedId.ToString());
 
+                using (SqlConnection connect = new SqlConnection(stringConnection))
+                {
+                    connect.Open();
+
+                    string pushData = $"SELECT * FROM Income WHERE incomeId = {selectedId}";
+                    SqlCommand command = new SqlCommand(pushData, connect);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())           // Checks if there is a row to read
+                    {
+                        Categorytxt.SelectedItem = reader["category"].ToString();
+                        Itemtxt.Text = reader["item"].ToString();
+                        Costtxt.Text = reader["cost"].ToString();
+                        Descriptiontxt.Text = reader["description"].ToString();
+                        Datetxt.Value = Convert.ToDateTime(reader["date_income"]);
+                    }
+                    reader.Close();
+                }
             }
         }
 
@@ -127,18 +150,32 @@ namespace Car_Service_Management_System
                 {
                     connect.Open();
 
-                    string insertData = "INSERT INTO income (category, item, description, date_income,date_insert)" +
-                        "VALUES(@cat,@item,@income,@desc,@date_in, @date)";
+                    // Brian : didn't have income id so added that to the query.
+
+                    /* Brain : assuming date_income --> @date_in  (The date user enters)
+                     *          and date_insert --> @date (The date the record was inserted)   
+                     *          From here and all events below      */
+
+                    string insertData = "INSERT INTO Income (incomeId, category, item, cost, description, date_income,date_insert)" +
+                        "VALUES(@id, @cat,@item,@income,@desc,@date_in, @date)";
 
                     using (SqlCommand cmd = new SqlCommand(insertData, connect))
                     {
+
                         cmd.Parameters.AddWithValue("@cat", Categorytxt.SelectedItem);
                         cmd.Parameters.AddWithValue("@item", Itemtxt.Text);
                         cmd.Parameters.AddWithValue("@income", Costtxt.Text);
                         cmd.Parameters.AddWithValue("@desc", Descriptiontxt.Text);
-                        cmd.Parameters.AddWithValue("@date_in", Datetxt.Text);
-                        cmd.Parameters.AddWithValue("@date", Datetxt.Value);
+                        cmd.Parameters.AddWithValue("@date_in", Datetxt.Value);
+
+                        /*Brian : Commented out because error pops up. Cannot chang the value of a field 2 times in the same query.
+                         *          If necessary to take today's date uncomment it          */
+
+                        //cmd.Parameters.AddWithValue("@date", Datetxt.Value); 
+
+                        // Brian : Make the Key field(id) auto increment or Make a new textbox to enter Key field(id) value 
                         cmd.Parameters.AddWithValue("@id", getId);
+
 
                         DateTime today = DateTime.Now;
                         cmd.Parameters.AddWithValue("@date", today);
@@ -156,6 +193,7 @@ namespace Car_Service_Management_System
             displayExpensesdate();
         }
 
+        // Brian : Some fields were missing put them to complete query
         private void button12_Click(object sender, EventArgs e)
         {
             if (Categorytxt.SelectedIndex == -1 || Itemtxt.Text == ""
@@ -165,14 +203,14 @@ namespace Car_Service_Management_System
             }
             else
             {
-                if (MessageBox.Show("Are you sure you want to Update Id: " + getId + "?",
+                if (MessageBox.Show("Are you sure you want to Update Id: " + selectedId + "?",
                     "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     using (SqlConnection connect = new SqlConnection(stringConnection))
                     {
                         connect.Open();
 
-                        string updateData = "UPDATE incme SET category = @cat, item = @item, income = @income, description = @desc, date_income = @date_in WHERE id = @id ";
+                        string updateData = "UPDATE Income SET category = @cat, item = @item, cost  = @income, description = @desc, date_income = @date_in, date_insert = @date WHERE incomeId = @id ";
 
                         using (SqlCommand cmd = new SqlCommand(updateData, connect))
                         {
@@ -180,8 +218,11 @@ namespace Car_Service_Management_System
                             cmd.Parameters.AddWithValue("@item", Itemtxt.Text);
                             cmd.Parameters.AddWithValue("@income", Costtxt.Text);
                             cmd.Parameters.AddWithValue("@desc", Descriptiontxt.Text);
-                            cmd.Parameters.AddWithValue("@date", Datetxt.Value);
-                            cmd.Parameters.AddWithValue("@id", getId);
+                            cmd.Parameters.AddWithValue("@date_in", Datetxt.Value);
+                            cmd.Parameters.AddWithValue("@id", selectedId);
+
+                            DateTime today = DateTime.Now;
+                            cmd.Parameters.AddWithValue("@date", today);
 
 
                             cmd.ExecuteNonQuery();
@@ -209,7 +250,7 @@ namespace Car_Service_Management_System
             }
             else
             {
-                if (MessageBox.Show("Are you sure you want to Delete Id: " + getId + "?",
+                if (MessageBox.Show("Are you sure you want to Delete Id: " + selectedId + "?",
                    "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
@@ -217,20 +258,12 @@ namespace Car_Service_Management_System
                     {
                         connect.Open();
 
-                        string insertData = "DELETE FROM income WHERE id = @id";
+                        string insertData = "DELETE FROM Income WHERE incomeId = @id";
 
                         using (SqlCommand cmd = new SqlCommand(insertData, connect))
                         {
-                            cmd.Parameters.AddWithValue("@cat", Categorytxt.SelectedText);
-                            cmd.Parameters.AddWithValue("@item", Itemtxt.Text);
-                            cmd.Parameters.AddWithValue("@cost", Costtxt.Text);
-                            cmd.Parameters.AddWithValue("@desc", Descriptiontxt.Text);
-                            cmd.Parameters.AddWithValue("@date_in", Datetxt.Text);
-                            cmd.Parameters.AddWithValue("@date", Datetxt.Value);
-                            cmd.Parameters.AddWithValue("@id", getId);
-
-                            DateTime today = DateTime.Now;
-                            cmd.Parameters.AddWithValue("@date", today);
+                            // Brian : Removed all unnecessary parameter bindings.
+                            cmd.Parameters.AddWithValue("@id", selectedId);
 
                             cmd.ExecuteNonQuery();
                             clearFields();

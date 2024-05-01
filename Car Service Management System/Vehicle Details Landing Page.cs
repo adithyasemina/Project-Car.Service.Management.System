@@ -47,7 +47,7 @@ namespace Car_Service_Management_System
         {
             if (MessageBox.Show("Data will be Deleted.Confirm?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\prabh\source\repos\Vehicle_Details\Vehicle_Details\Vehicle_Details_Database1.mdf; Integrated Security = True");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -72,7 +72,7 @@ namespace Car_Service_Management_System
         private void Vehicle_Details_Landing_Page_Load(object sender, EventArgs e)
         {
             panel2.Visible = false;
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\prabh\source\repos\Vehicle_Details\Vehicle_Details\Vehicle_Details_Database1.mdf; Integrated Security = True");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
@@ -88,7 +88,7 @@ namespace Car_Service_Management_System
         {
             if (txtCID.Text != "")
             {
-                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\prabh\source\repos\Vehicle_Details\Vehicle_Details\Vehicle_Details_Database1.mdf; Integrated Security = True");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "select * from Table where Table_id LIKE '" + txtCID.Text + "%'";
@@ -99,7 +99,7 @@ namespace Car_Service_Management_System
             }
             else
             {
-                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\prabh\source\repos\Vehicle_Details\Vehicle_Details\Vehicle_Details_Database1.mdf; Integrated Security = True");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "select * from Table where Table_id LIKE '" + txtCID.Text + "%'";
@@ -121,7 +121,7 @@ namespace Car_Service_Management_System
                 cid = int.Parse(dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString());
             }
             panel2.Visible = true;
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\prabh\source\repos\Vehicle_Details\Vehicle_Details\Vehicle_Details_Database1.mdf; Integrated Security = True");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandText = "select * from Table where Table_id=" + cid + "";
@@ -160,7 +160,7 @@ namespace Car_Service_Management_System
 
             if (MessageBox.Show("Data will be Updedated.Confirm?", "succses", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\prabh\source\repos\Vehicle_Details\Vehicle_Details\Vehicle_Details_Database1.mdf; Integrated Security = True");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 

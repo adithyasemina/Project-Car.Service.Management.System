@@ -26,7 +26,7 @@ namespace Car_Service_Management_System
         private int GetReferenceId()
         {
             int refId = 1; // default value
-            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Group projects individually\Venuraka\database\Venuraka.mdf;Integrated Security=True;Connect Timeout=30"))
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True"))
             {
                 conn.Open();
                 string query = "SELECT MAX(refid) FROM tbl_calendar";
@@ -54,7 +54,7 @@ namespace Car_Service_Management_System
 
         private void FILLDGV()
         {
-            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Group projects individually\Venuraka\database\Venuraka.mdf;Integrated Security=True;Connect Timeout=30"))
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True"))
             {
                 try
                 {
@@ -84,7 +84,7 @@ namespace Car_Service_Management_System
 
             int refId = GetReferenceId();
 
-            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Group projects individually\Venuraka\database\Venuraka.mdf;Integrated Security=True;Connect Timeout=30"))
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True"))
             {
                 try
                 {

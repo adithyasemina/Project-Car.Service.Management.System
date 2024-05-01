@@ -152,7 +152,7 @@ namespace Car_Service_Management_System
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 55);
             this.button2.TabIndex = 17;
-            this.button2.Text = "NEW";
+            this.button2.Text = "CLEAR";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -317,6 +317,7 @@ namespace Car_Service_Management_System
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(807, 172);
             this.dataGridView2.TabIndex = 2;
+            this.dataGridView2.SelectionChanged += new System.EventHandler(this.dataGridView2_SelectionChanged);
             // 
             // Employee
             // 

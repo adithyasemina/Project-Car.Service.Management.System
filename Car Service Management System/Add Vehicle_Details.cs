@@ -15,7 +15,7 @@ namespace Car_Service_Management_System
 {
     public partial class Add_Vehicle_Details : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\prabh\source\repos\Vehicle_Details\Vehicle_Details\Vehicle_Details_Database1.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
 
         public Add_Vehicle_Details()
         {
@@ -56,7 +56,7 @@ namespace Car_Service_Management_System
             String Etype = txtET1.Text;
             String Date = dateTimePicker1.Value.ToString("yyyy-MM-dd");
 
-            String query = $"INSERT INTO Table(Id,Customer_name,Vehicle_name,Vehicle_brand,Vehicle_number,Customer_tel.number,Chassis_number,Fuel_type,Engine_type,Date)Values('{Cid}','{Cname}','{Vname}','{Vbrand}','{Vnum}','{Teleno}','{Chassisnum}','{Ftype}','{Etype}','{Date}');";
+            String query = $"INSERT INTO inventoryData (customerId,Customer_name,Vehicle_name,Vehicle_brand,Vehicle_number,Customer_tel.number,Chassis_number,Fuel_type,Engine_type,Date)Values('{Cid}','{Cname}','{Vname}','{Vbrand}','{Vnum}','{Teleno}','{Chassisnum}','{Ftype}','{Etype}','{Date}');";
             SqlCommand cmd = new SqlCommand(query, con);
             try
             {

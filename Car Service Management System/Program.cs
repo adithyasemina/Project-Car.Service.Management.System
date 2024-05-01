@@ -16,12 +16,7 @@ namespace Car_Service_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+            Application.Run(new MainForm());
         }
-    }
-
-    public class AdminSession
-    {
-        public static bool isLoggedIn = false;
     }
 }

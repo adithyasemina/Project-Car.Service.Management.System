@@ -13,12 +13,13 @@ namespace Car_Service_Management_System
 {
     public partial class AddService : Form
     {
-        SqlConnection con1 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Asus\source\project\Car Service Management System\Car Service Management System\serviceHistory.mdf;Integrated Security=True");
+        SqlConnection con1 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
 
         public AddService()
         {
             InitializeComponent();
         }
+
 
         private void lblId_Click(object sender, EventArgs e)
         {
@@ -36,7 +37,7 @@ namespace Car_Service_Management_System
             String serviceProvider = txtSProvider.Text;
 
 
-            string query = $"INSERT INTO serviceHistory(id, service, vehicleNo, brand, model, date, serviceProvider) VALUES ({id}, '{service}', '{vehicleNo}', '{brand}', '{model}', {date}, '{serviceProvider}');";
+            string query = $"INSERT INTO serviceHistory(serviceId, service, vehicleNo, brand, model, date, serviceProvider) VALUES ({id}, '{service}', '{vehicleNo}', '{brand}', '{model}', {date}, '{serviceProvider}');";
 
             SqlCommand cmd = new SqlCommand(query, con1);
             try
@@ -58,7 +59,7 @@ namespace Car_Service_Management_System
         {
             int ID = int.Parse(txtId.Text);
 
-            string query4 = $"DELETE service WHERE ID = (id)";
+            string query4 = $"DELETE service WHERE ID = (serviceId)";
 
             SqlCommand cmd3 = new SqlCommand(query4, con1);
             try
@@ -86,7 +87,7 @@ namespace Car_Service_Management_System
             DateTime date = DateTime.Today;
             String serviceProvider = txtSProvider.Text;
 
-            string query = $"update serviceHistory SET service ='{service}', vehicleNo ='{vehicleNo}', brand='{brand}', mode;='{model}', date={date}, serviceProvider='{serviceProvider}' WHERE id={id}";
+            string query = $"update serviceHistory SET service ='{service}', vehicleNo ='{vehicleNo}', brand='{brand}', mode;='{model}', date={date}, serviceProvider='{serviceProvider}' WHERE serviceId={id}";
 
             SqlCommand cmd = new SqlCommand(query, con1);
             try
@@ -102,6 +103,16 @@ namespace Car_Service_Management_System
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void AddService_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
