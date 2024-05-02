@@ -19,143 +19,178 @@ namespace Car_Service_Management_System
 {
     public partial class Inventory_Data_Landaing_Page : Form
     {
+
+        int productid;
+
         public Inventory_Data_Landaing_Page()
         {
             InitializeComponent();
         }
-        private void label1_Click(object sender, EventArgs e)
-        {
 
+        private void Inventory_Data_Landaing_Page_Load(object sender, EventArgs e)
+        {
+            showTable();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnaddproduct_Click(object sender, EventArgs e)
         {
             Add_Inventory_Data In = new Add_Inventory_Data();
             In.Show();
-
+            this.Hide();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-        }
-        private void
-            btnaddproduct_Click(object sender, EventArgs e)
-        {
-            Add_Inventory_Data ad = new Add_Inventory_Data();
-            ad.Show();
-        }
-        private void btndelete_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Data will be Deleted.Confirm?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-        }
-        private void butcancel_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Unsaved Data Will be Lost", "Are you sure?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-            {
-                this.Close();
-            }
-
-        }
-        private void Inventory_Data_Landaing_Page_Load(object sender, EventArgs e)
-        {
-            panel3.Visible = false;
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-
-            cmd.CommandText = "select * from inventoryData";
-            SqlDataAdapter DA = new SqlDataAdapter(cmd);
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-
-            dataGridView1.DataSource = DS.Tables[0];
-
-        }
-        private void txtcid_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (textBox1.Text != "")
             {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = "select * from Customer where customer_id LIKE '" + textBox1.Text + "%'";
+                cmd.CommandText = "SELECT * FROM inventoryData WHERE ProductId LIKE '" + textBox1.Text + "%'";
                 SqlDataAdapter DA = new SqlDataAdapter(cmd);
                 DataSet DS = new DataSet();
                 DA.Fill(DS);
                 dataGridView1.DataSource = DS.Tables[0];
+            }
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                productid = Convert.ToInt32(selectedRow.Cells["ProductId"].Value);
+
+                using (SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30"))
+                {
+                    connect.Open();
+
+                    string pushData = $"SELECT * FROM inventoryData WHERE ProductId = {productid}";
+                    SqlCommand command = new SqlCommand(pushData, connect);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())           // Checks if there is a row to read
+                    {
+                        txtproductid.Text = reader["ProductId"].ToString();
+                        txtprice.Text = reader["Price"].ToString();
+                        txtproductname.Text = reader["ProductName"].ToString();
+                        txtmaintaincost.Text = reader["MaintainCost"].ToString();
+                        txtquantity.Text = reader["Quantity"].ToString();
+                        dateTimePicker1.Text = reader["Date"].ToString();
+
+                    }
+                    reader.Close();
+                    connect.Close();
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (txtproductid.Text == "" || txtproductname.Text == "" || txtquantity.Text == "" || txtprice.Text == "" || txtmaintaincost.Text == "" || dateTimePicker1.Text == "")
+            {
+                MessageBox.Show("Please select item first", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
-                cmd.CommandText = "select * from inventoryData";
-                SqlDataAdapter DA = new SqlDataAdapter(cmd);
-                DataSet DS = new DataSet();
-                DA.Fill(DS);
+                if (MessageBox.Show("Are you sure you want to Update Id: " + productid + "?",
+                    "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+                    con.Open();
 
-                dataGridView1.DataSource = DS.Tables[0];
+                    SqlCommand cnn = new SqlCommand($"DELETE FROM inventoryData WHERE ProductId = {productid}", con);
+
+                    int rowsAffected = cnn.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        // Query executed successfully
+                        MessageBox.Show("Record deleted successfully.");
+
+                        clearFieldsInventory();
+
+                        productid = 0;
+                    }
+                    else
+                    {
+                        // No rows affected, query might not have executed successfully
+                        MessageBox.Show("Error: Record not deleted.");
+                        clearFieldsInventory();
+                    }
+
+                    con.Close();
+                    showTable();
+                }
             }
-        }
-        int productid;
-        Int64 rowid;
+            }
+            
 
-        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if (txtproductid.Text == "" || txtproductname.Text == "" || txtquantity.Text == "" || txtprice.Text == "" || txtmaintaincost.Text == "" || dateTimePicker1.Text == "")
             {
-                productid = int.Parse(dataGridView1());
+                MessageBox.Show("Please select item first", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            panel3.Visible = true;
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "select * from inventoryData";
-            SqlDataAdapter DA = new SqlDataAdapter(cmd);
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-
-            rowid = Int64.Parse(DS.Tables[0].Rows[0][0].ToString());
-            txtproductname.Text = DS.Tables[0].Rows[0][1].ToString();
-            txtquantity.Text = DS.Tables[0].Rows[0][2].ToString();
-            txtprice.Text = DS.Tables[0].Rows[0][3].ToString();
-            txtmaintaincost.Text = DS.Tables[0].Rows[0][4].ToString();
-            dateTimePicker1.Text = DS.Tables[0].Rows[0][5].ToString();
-        }
-
-        private void btrefresh_Click(object sender, EventArgs e)
-        {
-            Inventory_Data_Landaing_Page_Load(this, null);
-        }
-
-        private void btnupdate_Click(object sender, EventArgs e)
-        {
-            Int64 productid = Int64.Parse(txtproductid.Text);
-            string productname = txtproductname.Text;
-            string quantity = txtquantity.Text;
-            string price = txtprice.Text;
-            string maintaincost = txtmaintaincost.Text;
-            string date = dateTimePicker1.Text;
-            if (MessageBox.Show("Data will be Updedated.Confirm?", "succses", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            else
             {
+                if (MessageBox.Show("Are you sure you want to Update Record No : " + productid + "?",
+                    "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
+                    con.Open();
+
+                    string updateData = "UPDATE inventoryData SET Date = @date, ProductName = @productName, Quantity  = @quantity, Price = @price, MaintainCost = @maintainCost WHERE ProductId = @productId ";
+
+                    using (SqlCommand cmd = new SqlCommand(updateData, con))
+                    {
+                        cmd.Parameters.AddWithValue("@date", dateTimePicker1.Text);
+                        cmd.Parameters.AddWithValue("@productName", txtproductname.Text);
+                        cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
+                        cmd.Parameters.AddWithValue("@price", txtprice.Text);
+                        cmd.Parameters.AddWithValue("@maintainCost", txtmaintaincost.Text);
+                        cmd.Parameters.AddWithValue("@productId", productid);
+
+
+
+                        cmd.ExecuteNonQuery();
+                        clearFieldsInventory();
+
+                        MessageBox.Show("Updated successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+
+                    con.Close();
+                }
             }
-
+            showTable();
         }
 
-        private void Inventory_Data_Landaing_Page_Load_1(object sender, EventArgs e)
+        void showTable()
         {
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlCommand cnn = new SqlCommand("SELECT * FROM inventoryData", con);
+            SqlDataAdapter da = new SqlDataAdapter(cnn);
+            DataTable table = new DataTable();
 
+            da.Fill(table);
+
+            dataGridView1.DataSource = table;
         }
+
+        void clearFieldsInventory()
+        {
+            txtproductid.Text = "";
+            txtproductname.Text = "";
+            txtquantity.Text = "";
+            txtprice.Text = "";
+            txtmaintaincost.Text = "";
+            dateTimePicker1.Text = "";
+            textBox1.Text = "";
+        }
+
     }
 }

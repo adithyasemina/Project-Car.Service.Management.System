@@ -76,7 +76,7 @@ namespace Car_Service_Management_System
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
-            loadForm(new Inventory());
+            loadForm(new Inventory_Data_Landaing_Page());
         }
 
         private void btnCustomers_Click(object sender, EventArgs e)
@@ -106,7 +106,7 @@ namespace Car_Service_Management_System
 
         private void btnEmployees_Click(object sender, EventArgs e)
         {
-            loadForm(new Employees());
+            loadForm(new Employee_Details_Landing_Page());
         }
 
         private void btnStatics_Click(object sender, EventArgs e)

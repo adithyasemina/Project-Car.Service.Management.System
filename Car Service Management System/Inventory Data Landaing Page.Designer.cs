@@ -48,7 +48,7 @@ namespace Car_Service_Management_System
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.TextBox();
@@ -63,6 +63,7 @@ namespace Car_Service_Management_System
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -85,6 +86,7 @@ namespace Car_Service_Management_System
             resources.ApplyResources(this.btnaddproduct, "btnaddproduct");
             this.btnaddproduct.Name = "btnaddproduct";
             this.btnaddproduct.UseVisualStyleBackColor = true;
+            this.btnaddproduct.Click += new System.EventHandler(this.btnaddproduct_Click);
             // 
             // pictureBox1
             // 
@@ -176,14 +178,16 @@ namespace Car_Service_Management_System
             this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // button11
+            // btnDelete
             // 
-            resources.ApplyResources(this.button11, "button11");
-            this.button11.BackColor = System.Drawing.Color.DimGray;
-            this.button11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button11.Name = "button11";
-            this.button11.UseVisualStyleBackColor = false;
+            resources.ApplyResources(this.btnDelete, "btnDelete");
+            this.btnDelete.BackColor = System.Drawing.Color.DimGray;
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // dataGridView1
             // 
@@ -192,6 +196,7 @@ namespace Car_Service_Management_System
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.WindowFrame;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // panel3
             // 
@@ -277,21 +282,31 @@ namespace Car_Service_Management_System
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
+            // btnUpdate
+            // 
+            resources.ApplyResources(this.btnUpdate, "btnUpdate");
+            this.btnUpdate.BackColor = System.Drawing.Color.DimGray;
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // Inventory_Data_Landaing_Page
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button11);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Inventory_Data_Landaing_Page";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Inventory_Data_Landaing_Page_Load_1);
+            this.Load += new System.EventHandler(this.Inventory_Data_Landaing_Page_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -322,7 +337,7 @@ namespace Car_Service_Management_System
         private Button button9;
         private Label label1;
         private TextBox textBox1;
-        private Button button11;
+        private Button btnDelete;
         private DataGridView dataGridView1;
         private Panel panel3;
         private Label label4;
@@ -337,5 +352,6 @@ namespace Car_Service_Management_System
         private TextBox txtquantity;
         private TextBox txtproductname;
         private TextBox txtproductid;
+        private Button btnUpdate;
     }
 }

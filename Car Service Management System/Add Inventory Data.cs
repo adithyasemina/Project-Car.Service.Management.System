@@ -14,43 +14,77 @@ namespace Car_Service_Management_System
 {
     public partial class Add_Inventory_Data : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
         public Add_Inventory_Data()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = "C:\Users\Jayani\source\repos\Inventory Data\Inventory Data\Database1.mdf"; Integrated Security = True
-        }
-
         private void btnsave_Click(object sender, EventArgs e)
         {
-            Int64 productid = Int64.Parse(txtproductid.Text);
-            string productname = txtproductname.Text;
-            string quantity = txtquantity.Text;
-            string price = txtprice.Text;
-            string maintaincost = txtmaintaincost.Text;
-            string date = dateTimePicker1.Text;
-
-            String query = $"INSERT INTO inventoryData(productid,productname,quantity,price,maintaincost,date)Values('{productid}', '{productname}', '{quantity}', '{maintaincost}', '{date}');";
-            SqlCommand cmd = new SqlCommand(query,con);
-
-            try
+            if (txtproductid.Text == "" || txtproductname.Text == "" || txtquantity.Text == "" || txtprice.Text == "" || txtmaintaincost.Text == "" )
             {
-                con.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Data Saved.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                con.Close();
+                MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            catch (SqlAlreadyFilledException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
+                try
+                {
+                    using (SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30"))
+                    {
+                        connect.Open();
 
+                        string insertData = $"INSERT INTO inventoryData(ProductId,ProductName,Quantity,Price,MaintainCost,Date)Values(@ProductId, @ProductName, @Quantity,@Price,@MaintainCost,@Date);";
+                        using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                        {
+                            cmd.Parameters.AddWithValue("@ProductId", txtproductid.Text);
+                            cmd.Parameters.AddWithValue("@ProductName", txtproductid.Text);
+                            cmd.Parameters.AddWithValue("@Quantity", txtquantity.Text);
+                            cmd.Parameters.AddWithValue("@Price", txtprice.Text);
+                            cmd.Parameters.AddWithValue("@MaintainCost", txtmaintaincost.Text);
+                            cmd.Parameters.AddWithValue("@Date", dateTimePicker1.Value);
+
+                            cmd.ExecuteNonQuery();
+                            clearFieldsInventoryAdd();
+                            MessageBox.Show("Added successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        connect.Close();
+
+                    }
+                }
+                catch (SqlAlreadyFilledException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            } 
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            clearFieldsInventoryAdd();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            // Show Form1
+            Application.OpenForms["Inventory_Data_Landaing_Page"].Show();
+
+            // Close form2
+            this.Close();
+        }
+
+        void clearFieldsInventoryAdd()
+        {
+            txtproductid.Text = "";
+            txtproductname.Text = "";
+            txtquantity.Text = "";
+            txtprice.Text = "";
+            txtmaintaincost.Text = "";
+        }
+
+        
     }
 }

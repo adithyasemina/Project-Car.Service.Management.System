@@ -31,8 +31,8 @@ namespace Car_Service_Management_System
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnsave = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -55,31 +55,33 @@ namespace Car_Service_Management_System
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button3
+            // btnBack
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(723, 496);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(123, 42);
-            this.button3.TabIndex = 33;
-            this.button3.Text = "EXIT";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnBack.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(723, 496);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(123, 42);
+            this.btnBack.TabIndex = 33;
+            this.btnBack.Text = "BACK";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // button2
+            // btnClear
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.Silver;
-            this.button2.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(723, 421);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(123, 42);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "REFRESH";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.BackColor = System.Drawing.Color.Silver;
+            this.btnClear.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(723, 421);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(123, 42);
+            this.btnClear.TabIndex = 32;
+            this.btnClear.Text = "CLEAR";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnsave
             // 
@@ -93,6 +95,7 @@ namespace Car_Service_Management_System
             this.btnsave.TabIndex = 31;
             this.btnsave.Text = "SAVE";
             this.btnsave.UseVisualStyleBackColor = false;
+            this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
             // pictureBox2
             // 
@@ -135,7 +138,7 @@ namespace Car_Service_Management_System
             this.label7.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(363, 38);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(241, 27);
+            this.label7.Size = new System.Drawing.Size(190, 21);
             this.label7.TabIndex = 0;
             this.label7.Text = "ADD INVENTORY DATA";
             // 
@@ -147,7 +150,7 @@ namespace Car_Service_Management_System
             this.dateTimePicker1.Location = new System.Drawing.Point(350, 525);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(228, 27);
+            this.dateTimePicker1.Size = new System.Drawing.Size(228, 23);
             this.dateTimePicker1.TabIndex = 28;
             // 
             // txtmaintaincost
@@ -158,7 +161,7 @@ namespace Car_Service_Management_System
             this.txtmaintaincost.Location = new System.Drawing.Point(350, 454);
             this.txtmaintaincost.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtmaintaincost.Name = "txtmaintaincost";
-            this.txtmaintaincost.Size = new System.Drawing.Size(228, 27);
+            this.txtmaintaincost.Size = new System.Drawing.Size(228, 23);
             this.txtmaintaincost.TabIndex = 27;
             // 
             // txtprice
@@ -169,7 +172,7 @@ namespace Car_Service_Management_System
             this.txtprice.Location = new System.Drawing.Point(350, 389);
             this.txtprice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtprice.Name = "txtprice";
-            this.txtprice.Size = new System.Drawing.Size(228, 27);
+            this.txtprice.Size = new System.Drawing.Size(228, 23);
             this.txtprice.TabIndex = 26;
             // 
             // txtquantity
@@ -180,7 +183,7 @@ namespace Car_Service_Management_System
             this.txtquantity.Location = new System.Drawing.Point(350, 318);
             this.txtquantity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtquantity.Name = "txtquantity";
-            this.txtquantity.Size = new System.Drawing.Size(228, 27);
+            this.txtquantity.Size = new System.Drawing.Size(228, 23);
             this.txtquantity.TabIndex = 25;
             // 
             // txtproductname
@@ -191,7 +194,7 @@ namespace Car_Service_Management_System
             this.txtproductname.Location = new System.Drawing.Point(350, 246);
             this.txtproductname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtproductname.Name = "txtproductname";
-            this.txtproductname.Size = new System.Drawing.Size(228, 27);
+            this.txtproductname.Size = new System.Drawing.Size(228, 23);
             this.txtproductname.TabIndex = 24;
             // 
             // txtproductid
@@ -202,7 +205,7 @@ namespace Car_Service_Management_System
             this.txtproductid.Location = new System.Drawing.Point(350, 181);
             this.txtproductid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtproductid.Name = "txtproductid";
-            this.txtproductid.Size = new System.Drawing.Size(228, 27);
+            this.txtproductid.Size = new System.Drawing.Size(228, 23);
             this.txtproductid.TabIndex = 23;
             // 
             // label6
@@ -214,7 +217,7 @@ namespace Car_Service_Management_System
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(155, 534);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 23);
+            this.label6.Size = new System.Drawing.Size(45, 17);
             this.label6.TabIndex = 22;
             this.label6.Text = "DATE:";
             // 
@@ -227,7 +230,7 @@ namespace Car_Service_Management_System
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(155, 461);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(149, 23);
+            this.label5.Size = new System.Drawing.Size(114, 17);
             this.label5.TabIndex = 21;
             this.label5.Text = "MAINTAIN COST:";
             // 
@@ -240,7 +243,7 @@ namespace Car_Service_Management_System
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(155, 391);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 23);
+            this.label4.Size = new System.Drawing.Size(47, 17);
             this.label4.TabIndex = 20;
             this.label4.Text = "PRICE:";
             // 
@@ -253,7 +256,7 @@ namespace Car_Service_Management_System
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(155, 325);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.Size = new System.Drawing.Size(78, 17);
             this.label3.TabIndex = 19;
             this.label3.Text = "QUANTITY:";
             // 
@@ -266,7 +269,7 @@ namespace Car_Service_Management_System
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(152, 255);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 23);
+            this.label2.Size = new System.Drawing.Size(115, 17);
             this.label2.TabIndex = 18;
             this.label2.Text = "PRODUCT NAME:";
             // 
@@ -279,17 +282,17 @@ namespace Car_Service_Management_System
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(152, 181);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 23);
+            this.label1.Size = new System.Drawing.Size(91, 17);
             this.label1.TabIndex = 17;
             this.label1.Text = "PRODUCT ID:";
             // 
             // Add_Inventory_Data
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 815);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(914, 749);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnsave);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel1);
@@ -321,8 +324,8 @@ namespace Car_Service_Management_System
 
         #endregion
 
-        private Button button3;
-        private Button button2;
+        private Button btnBack;
+        private Button btnClear;
         private Button btnsave;
         private PictureBox pictureBox2;
         private Panel panel1;

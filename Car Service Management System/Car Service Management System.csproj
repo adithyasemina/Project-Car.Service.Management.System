@@ -258,6 +258,9 @@
     <EmbeddedResource Include="ServiceHistory.resx">
       <DependentUpon>ServiceHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Statistics.resx">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vehicle Details Landing Page.resx">
       <DependentUpon>Vehicle Details Landing Page.cs</DependentUpon>
     </EmbeddedResource>

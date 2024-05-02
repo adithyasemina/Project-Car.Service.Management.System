@@ -16,7 +16,12 @@ namespace Car_Service_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new Inventory_Data_Landaing_Page());
         }
+    }
+
+    public class AdminSession
+    {
+        public static bool isLoggedIn = false;
     }
 }
