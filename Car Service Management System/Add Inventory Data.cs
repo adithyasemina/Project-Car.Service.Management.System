@@ -14,7 +14,6 @@ namespace Car_Service_Management_System
 {
     public partial class Add_Inventory_Data : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
         public Add_Inventory_Data()
         {
@@ -39,7 +38,7 @@ namespace Car_Service_Management_System
                         using (SqlCommand cmd = new SqlCommand(insertData, connect))
                         {
                             cmd.Parameters.AddWithValue("@ProductId", txtproductid.Text);
-                            cmd.Parameters.AddWithValue("@ProductName", txtproductid.Text);
+                            cmd.Parameters.AddWithValue("@ProductName", txtproductname.Text);
                             cmd.Parameters.AddWithValue("@Quantity", txtquantity.Text);
                             cmd.Parameters.AddWithValue("@Price", txtprice.Text);
                             cmd.Parameters.AddWithValue("@MaintainCost", txtmaintaincost.Text);
@@ -69,7 +68,7 @@ namespace Car_Service_Management_System
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            // Show Form1
+            // Show Inventory_Data_Landaing_Page
             Application.OpenForms["Inventory_Data_Landaing_Page"].Show();
 
             // Close form2

@@ -52,12 +52,14 @@ namespace Car_Service_Management_System
             this.lblDate = new System.Windows.Forms.Label();
             this.lblFType1 = new System.Windows.Forms.Label();
             this.lblAddVehicle = new System.Windows.Forms.Label();
+            this.txtCustomerId = new System.Windows.Forms.TextBox();
+            this.lblCustomerId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(328, 475);
+            this.dateTimePicker1.Location = new System.Drawing.Point(328, 487);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(413, 22);
@@ -75,6 +77,7 @@ namespace Car_Service_Management_System
             this.btnExit.TabIndex = 58;
             this.btnExit.Text = "EXIT";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnRef
             // 
@@ -88,6 +91,7 @@ namespace Car_Service_Management_System
             this.btnRef.TabIndex = 57;
             this.btnRef.Text = "REFRESH";
             this.btnRef.UseVisualStyleBackColor = false;
+            this.btnRef.Click += new System.EventHandler(this.btnRef_Click);
             // 
             // btnSave
             // 
@@ -101,6 +105,7 @@ namespace Car_Service_Management_System
             this.btnSave.TabIndex = 56;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // pictureBox2
             // 
@@ -115,7 +120,7 @@ namespace Car_Service_Management_System
             // txtET1
             // 
             this.txtET1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtET1.Location = new System.Drawing.Point(328, 431);
+            this.txtET1.Location = new System.Drawing.Point(328, 443);
             this.txtET1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtET1.Name = "txtET1";
             this.txtET1.Size = new System.Drawing.Size(413, 26);
@@ -124,7 +129,7 @@ namespace Car_Service_Management_System
             // txtFT1
             // 
             this.txtFT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFT1.Location = new System.Drawing.Point(328, 390);
+            this.txtFT1.Location = new System.Drawing.Point(328, 402);
             this.txtFT1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFT1.Name = "txtFT1";
             this.txtFT1.Size = new System.Drawing.Size(413, 26);
@@ -133,7 +138,7 @@ namespace Car_Service_Management_System
             // txtCNum1
             // 
             this.txtCNum1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCNum1.Location = new System.Drawing.Point(328, 346);
+            this.txtCNum1.Location = new System.Drawing.Point(328, 358);
             this.txtCNum1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCNum1.Name = "txtCNum1";
             this.txtCNum1.Size = new System.Drawing.Size(413, 26);
@@ -142,7 +147,7 @@ namespace Car_Service_Management_System
             // txtCN1
             // 
             this.txtCN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCN1.Location = new System.Drawing.Point(328, 134);
+            this.txtCN1.Location = new System.Drawing.Point(328, 146);
             this.txtCN1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCN1.Name = "txtCN1";
             this.txtCN1.Size = new System.Drawing.Size(413, 26);
@@ -151,7 +156,7 @@ namespace Car_Service_Management_System
             // txtVN1
             // 
             this.txtVN1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVN1.Location = new System.Drawing.Point(328, 177);
+            this.txtVN1.Location = new System.Drawing.Point(328, 189);
             this.txtVN1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtVN1.Name = "txtVN1";
             this.txtVN1.Size = new System.Drawing.Size(413, 26);
@@ -160,7 +165,7 @@ namespace Car_Service_Management_System
             // txtVB1
             // 
             this.txtVB1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVB1.Location = new System.Drawing.Point(328, 218);
+            this.txtVB1.Location = new System.Drawing.Point(328, 230);
             this.txtVB1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtVB1.Name = "txtVB1";
             this.txtVB1.Size = new System.Drawing.Size(413, 26);
@@ -169,7 +174,7 @@ namespace Car_Service_Management_System
             // txtVNum1
             // 
             this.txtVNum1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVNum1.Location = new System.Drawing.Point(328, 264);
+            this.txtVNum1.Location = new System.Drawing.Point(328, 276);
             this.txtVNum1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtVNum1.Name = "txtVNum1";
             this.txtVNum1.Size = new System.Drawing.Size(413, 26);
@@ -178,7 +183,7 @@ namespace Car_Service_Management_System
             // txtCT1
             // 
             this.txtCT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCT1.Location = new System.Drawing.Point(328, 304);
+            this.txtCT1.Location = new System.Drawing.Point(328, 316);
             this.txtCT1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCT1.Name = "txtCT1";
             this.txtCT1.Size = new System.Drawing.Size(413, 26);
@@ -188,7 +193,7 @@ namespace Car_Service_Management_System
             // 
             this.lblEType1.AutoSize = true;
             this.lblEType1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEType1.Location = new System.Drawing.Point(58, 431);
+            this.lblEType1.Location = new System.Drawing.Point(58, 443);
             this.lblEType1.Name = "lblEType1";
             this.lblEType1.Size = new System.Drawing.Size(119, 20);
             this.lblEType1.TabIndex = 46;
@@ -198,7 +203,7 @@ namespace Car_Service_Management_System
             // 
             this.lblChassis1.AutoSize = true;
             this.lblChassis1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChassis1.Location = new System.Drawing.Point(58, 349);
+            this.lblChassis1.Location = new System.Drawing.Point(58, 361);
             this.lblChassis1.Name = "lblChassis1";
             this.lblChassis1.Size = new System.Drawing.Size(160, 20);
             this.lblChassis1.TabIndex = 44;
@@ -208,7 +213,7 @@ namespace Car_Service_Management_System
             // 
             this.lblVNum1.AutoSize = true;
             this.lblVNum1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVNum1.Location = new System.Drawing.Point(58, 262);
+            this.lblVNum1.Location = new System.Drawing.Point(58, 274);
             this.lblVNum1.Name = "lblVNum1";
             this.lblVNum1.Size = new System.Drawing.Size(159, 20);
             this.lblVNum1.TabIndex = 43;
@@ -218,7 +223,7 @@ namespace Car_Service_Management_System
             // 
             this.lblVBrand1.AutoSize = true;
             this.lblVBrand1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVBrand1.Location = new System.Drawing.Point(58, 221);
+            this.lblVBrand1.Location = new System.Drawing.Point(58, 233);
             this.lblVBrand1.Name = "lblVBrand1";
             this.lblVBrand1.Size = new System.Drawing.Size(146, 20);
             this.lblVBrand1.TabIndex = 42;
@@ -228,7 +233,7 @@ namespace Car_Service_Management_System
             // 
             this.lblVName1.AutoSize = true;
             this.lblVName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVName1.Location = new System.Drawing.Point(58, 179);
+            this.lblVName1.Location = new System.Drawing.Point(58, 191);
             this.lblVName1.Name = "lblVName1";
             this.lblVName1.Size = new System.Drawing.Size(134, 20);
             this.lblVName1.TabIndex = 41;
@@ -238,7 +243,7 @@ namespace Car_Service_Management_System
             // 
             this.lblCNum1.AutoSize = true;
             this.lblCNum1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCNum1.Location = new System.Drawing.Point(58, 306);
+            this.lblCNum1.Location = new System.Drawing.Point(58, 318);
             this.lblCNum1.Name = "lblCNum1";
             this.lblCNum1.Size = new System.Drawing.Size(217, 20);
             this.lblCNum1.TabIndex = 40;
@@ -250,7 +255,7 @@ namespace Car_Service_Management_System
             this.lblCName1.BackColor = System.Drawing.SystemColors.Control;
             this.lblCName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCName1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblCName1.Location = new System.Drawing.Point(58, 137);
+            this.lblCName1.Location = new System.Drawing.Point(58, 149);
             this.lblCName1.Name = "lblCName1";
             this.lblCName1.Size = new System.Drawing.Size(157, 20);
             this.lblCName1.TabIndex = 39;
@@ -260,7 +265,7 @@ namespace Car_Service_Management_System
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(58, 474);
+            this.lblDate.Location = new System.Drawing.Point(58, 486);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(54, 20);
             this.lblDate.TabIndex = 47;
@@ -270,7 +275,7 @@ namespace Car_Service_Management_System
             // 
             this.lblFType1.AutoSize = true;
             this.lblFType1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFType1.Location = new System.Drawing.Point(58, 390);
+            this.lblFType1.Location = new System.Drawing.Point(58, 402);
             this.lblFType1.Name = "lblFType1";
             this.lblFType1.Size = new System.Drawing.Size(99, 20);
             this.lblFType1.TabIndex = 45;
@@ -287,11 +292,34 @@ namespace Car_Service_Management_System
             this.lblAddVehicle.Text = "ADD VEHICLE DETAILS";
             this.lblAddVehicle.Click += new System.EventHandler(this.lblAddVehicle_Click);
             // 
+            // txtCustomerId
+            // 
+            this.txtCustomerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerId.Location = new System.Drawing.Point(328, 102);
+            this.txtCustomerId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCustomerId.Name = "txtCustomerId";
+            this.txtCustomerId.Size = new System.Drawing.Size(413, 26);
+            this.txtCustomerId.TabIndex = 60;
+            // 
+            // lblCustomerId
+            // 
+            this.lblCustomerId.AutoSize = true;
+            this.lblCustomerId.BackColor = System.Drawing.SystemColors.Control;
+            this.lblCustomerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomerId.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblCustomerId.Location = new System.Drawing.Point(58, 105);
+            this.lblCustomerId.Name = "lblCustomerId";
+            this.lblCustomerId.Size = new System.Drawing.Size(126, 20);
+            this.lblCustomerId.TabIndex = 61;
+            this.lblCustomerId.Text = "CUSTOMER ID";
+            // 
             // Vehicles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 625);
+            this.Controls.Add(this.txtCustomerId);
+            this.Controls.Add(this.lblCustomerId);
             this.Controls.Add(this.lblAddVehicle);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnExit);
@@ -349,5 +377,7 @@ namespace Car_Service_Management_System
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblFType1;
         private System.Windows.Forms.Label lblAddVehicle;
+        private System.Windows.Forms.TextBox txtCustomerId;
+        private System.Windows.Forms.Label lblCustomerId;
     }
 }

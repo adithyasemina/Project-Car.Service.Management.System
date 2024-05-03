@@ -62,23 +62,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ADD Customer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ADD Customer.Designer.cs">
-      <DependentUpon>ADD Customer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Add Inventory Data.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Add Inventory Data.Designer.cs">
       <DependentUpon>Add Inventory Data.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Add Vehicle_Details.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Add Vehicle_Details.Designer.cs">
-      <DependentUpon>Add Vehicle_Details.cs</DependentUpon>
     </Compile>
     <Compile Include="AddService.cs">
       <SubType>Form</SubType>
@@ -98,35 +86,23 @@
     <Compile Include="Admin Login.Designer.cs">
       <DependentUpon>Admin Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="BookingHistory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BookingHistory.Designer.cs">
-      <DependentUpon>BookingHistory.cs</DependentUpon>
-    </Compile>
     <Compile Include="Calender.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Calender.Designer.cs">
       <DependentUpon>Calender.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer Details Landing Page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer Details Landing Page.Designer.cs">
+      <DependentUpon>Customer Details Landing Page.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Customers.Designer.cs">
       <DependentUpon>Customers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Employee Details Landing Page.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Employee Details Landing Page.Designer.cs">
-      <DependentUpon>Employee Details Landing Page.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
       <SubType>Form</SubType>
@@ -164,12 +140,6 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Payments.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Payments.Designer.cs">
-      <DependentUpon>Payments.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,17 +191,17 @@
     <EmbeddedResource Include="AddService.resx">
       <DependentUpon>AddService.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BookingHistory.resx">
-      <DependentUpon>BookingHistory.cs</DependentUpon>
+    <EmbeddedResource Include="Customer Details Landing Page.resx">
+      <DependentUpon>Customer Details Landing Page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customers.resx">
       <DependentUpon>Customers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Expense Details.resx">
+      <DependentUpon>Expense Details.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -241,9 +211,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Payments.resx">
-      <DependentUpon>Payments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -347,13 +314,6 @@
     <Content Include="Database\CarManagementDatabase_log.ldf">
       <DependentUpon>CarManagementDatabase.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="serviceHistory.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="serviceHistory_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>serviceHistory.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

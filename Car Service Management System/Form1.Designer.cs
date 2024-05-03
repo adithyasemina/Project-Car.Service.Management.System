@@ -41,9 +41,9 @@ namespace Car_Service_Management_System
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnVehicles = new System.Windows.Forms.Button();
-            this.btnPayments = new System.Windows.Forms.Button();
+            this.btnBooking = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
-            this.btnReservations = new System.Windows.Forms.Button();
+            this.btnExpense = new System.Windows.Forms.Button();
             this.btnStatics = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.MenuPanel.SuspendLayout();
@@ -61,9 +61,9 @@ namespace Car_Service_Management_System
             this.MenuPanel.Controls.Add(this.panel1);
             this.MenuPanel.Controls.Add(this.button1);
             this.MenuPanel.Controls.Add(this.btnVehicles);
-            this.MenuPanel.Controls.Add(this.btnPayments);
+            this.MenuPanel.Controls.Add(this.btnBooking);
             this.MenuPanel.Controls.Add(this.btnEmployees);
-            this.MenuPanel.Controls.Add(this.btnReservations);
+            this.MenuPanel.Controls.Add(this.btnExpense);
             this.MenuPanel.Controls.Add(this.btnStatics);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
@@ -224,24 +224,24 @@ namespace Car_Service_Management_System
             this.btnVehicles.UseVisualStyleBackColor = false;
             this.btnVehicles.Click += new System.EventHandler(this.btnVehicles_Click);
             // 
-            // btnPayments
+            // btnBooking
             // 
-            this.btnPayments.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPayments.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnPayments.FlatAppearance.BorderSize = 0;
-            this.btnPayments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPayments.ForeColor = System.Drawing.Color.White;
-            this.btnPayments.Image = global::Car_Service_Management_System.Properties.Resources.coins_solid;
-            this.btnPayments.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPayments.Location = new System.Drawing.Point(0, 332);
-            this.btnPayments.Margin = new System.Windows.Forms.Padding(0);
-            this.btnPayments.Name = "btnPayments";
-            this.btnPayments.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnPayments.Size = new System.Drawing.Size(294, 41);
-            this.btnPayments.TabIndex = 5;
-            this.btnPayments.Text = "Booking Appointment";
-            this.btnPayments.UseVisualStyleBackColor = false;
-            this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
+            this.btnBooking.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBooking.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnBooking.FlatAppearance.BorderSize = 0;
+            this.btnBooking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBooking.ForeColor = System.Drawing.Color.White;
+            this.btnBooking.Image = global::Car_Service_Management_System.Properties.Resources.coins_solid;
+            this.btnBooking.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBooking.Location = new System.Drawing.Point(0, 332);
+            this.btnBooking.Margin = new System.Windows.Forms.Padding(0);
+            this.btnBooking.Name = "btnBooking";
+            this.btnBooking.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnBooking.Size = new System.Drawing.Size(294, 41);
+            this.btnBooking.TabIndex = 5;
+            this.btnBooking.Text = "Booking Appointment";
+            this.btnBooking.UseVisualStyleBackColor = false;
+            this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
             // 
             // btnEmployees
             // 
@@ -262,23 +262,24 @@ namespace Car_Service_Management_System
             this.btnEmployees.UseVisualStyleBackColor = false;
             this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
-            // btnReservations
+            // btnExpense
             // 
-            this.btnReservations.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnReservations.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnReservations.FlatAppearance.BorderSize = 0;
-            this.btnReservations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReservations.ForeColor = System.Drawing.Color.White;
-            this.btnReservations.Image = global::Car_Service_Management_System.Properties.Resources.receipt_solid;
-            this.btnReservations.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReservations.Location = new System.Drawing.Point(0, 291);
-            this.btnReservations.Margin = new System.Windows.Forms.Padding(0);
-            this.btnReservations.Name = "btnReservations";
-            this.btnReservations.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnReservations.Size = new System.Drawing.Size(294, 41);
-            this.btnReservations.TabIndex = 2;
-            this.btnReservations.Text = "Expenses Details";
-            this.btnReservations.UseVisualStyleBackColor = false;
+            this.btnExpense.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnExpense.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnExpense.FlatAppearance.BorderSize = 0;
+            this.btnExpense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExpense.ForeColor = System.Drawing.Color.White;
+            this.btnExpense.Image = global::Car_Service_Management_System.Properties.Resources.receipt_solid;
+            this.btnExpense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExpense.Location = new System.Drawing.Point(0, 291);
+            this.btnExpense.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExpense.Name = "btnExpense";
+            this.btnExpense.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnExpense.Size = new System.Drawing.Size(294, 41);
+            this.btnExpense.TabIndex = 2;
+            this.btnExpense.Text = "Expenses Details";
+            this.btnExpense.UseVisualStyleBackColor = false;
+            this.btnExpense.Click += new System.EventHandler(this.btnExpense_Click);
             // 
             // btnStatics
             // 
@@ -307,7 +308,6 @@ namespace Car_Service_Management_System
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(974, 625);
             this.mainPanel.TabIndex = 2;
-            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanel_Paint);
             // 
             // MainForm
             // 
@@ -337,9 +337,9 @@ namespace Car_Service_Management_System
         #endregion
 
         private System.Windows.Forms.Panel MenuPanel;
-        private System.Windows.Forms.Button btnReservations;
+        private System.Windows.Forms.Button btnExpense;
         private System.Windows.Forms.Button btnVehicles;
-        private System.Windows.Forms.Button btnPayments;
+        private System.Windows.Forms.Button btnBooking;
         private System.Windows.Forms.Button btnEmployees;
         private System.Windows.Forms.Button btnStatics;
         private System.Windows.Forms.Panel mainPanel;

@@ -19,8 +19,8 @@ namespace Car_Service_Management_System
             InitializeComponent();
         }
 
-        //readonly SqlConnection con = new SqlConnection(@"Data Source=MSI;Initial Catalog=employee_details;Integrated Security=True;Encrypt=False;Trust Server Certificate=True");
-        readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
+        //readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
         private void Employee_Load(object sender, EventArgs e)
         {
@@ -55,7 +55,7 @@ namespace Car_Service_Management_System
         void BindData()
         {
             //SqlCommand cnn = new SqlCommand("Select * from Table", con);
-            SqlCommand cnn = new SqlCommand("SELECT * FROM [Table]", con);
+            SqlCommand cnn = new SqlCommand("SELECT * FROM [employeeDetail]", con);
             SqlDataAdapter da = new SqlDataAdapter(cnn);
             DataTable table = new DataTable();
 
@@ -74,7 +74,7 @@ namespace Car_Service_Management_System
 
             // Brian: Added Id which was ommitted previously
 
-            SqlCommand cnn = new SqlCommand("INSERT INTO [Table] (name, Id, position, age, address, salary, email) VALUES (@name, @Id, @position, @age, @address, @salary, @email)", con);
+            SqlCommand cnn = new SqlCommand("INSERT INTO [employeeDetail] (name, empId, position, age, address, salary, email) VALUES (@name, @Id, @position, @age, @address, @salary, @email)", con);
 
             cnn.Parameters.AddWithValue("@Name", textBox1.Text);
 
@@ -126,11 +126,12 @@ namespace Car_Service_Management_System
 
         // variable for storing clicked id value
         int selectedId = 0;
+
         private void button3_Click(object sender, EventArgs e)
         {
             con.Open();
 
-            SqlCommand cnn = new SqlCommand($"DELETE FROM [employeeDetail] WHERE EmpId = {selectedId}", con);
+            SqlCommand cnn = new SqlCommand($"DELETE FROM [employeeDetail] WHERE empId = {selectedId}", con);
 
             // Brian: Checks amount of rows affected by query
             int rowsAffected = cnn.ExecuteNonQuery();
@@ -152,9 +153,10 @@ namespace Car_Service_Management_System
                 MessageBox.Show("Error: Employee not deleted.");
                 clearFieldsEmployee();
             }
-
+            con.Close();
             BindData();
         }
+
 
         // Method responsible for identifying selected row
         private void dataGridView2_SelectionChanged(object sender, EventArgs e)
@@ -165,10 +167,12 @@ namespace Car_Service_Management_System
 
                 // Converting and storing value of 1st row into "id" varible
                 int id = Convert.ToInt32(selectedRow.Cells["Empid"].Value);
-
-                MessageBox.Show("Clicked " + id.ToString());
                 selectedId = id;
+                MessageBox.Show($"clicked : {selectedId}");
+
             }
         }
+
+        
     }
 }

@@ -32,13 +32,6 @@ namespace Car_Service_Management_System
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.service = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vehicleNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serviceProvider = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +43,7 @@ namespace Car_Service_Management_System
             this.label1.Location = new System.Drawing.Point(36, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 39);
+            this.label1.Size = new System.Drawing.Size(181, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Service History";
             // 
@@ -60,77 +53,22 @@ namespace Car_Service_Management_System
             this.textBox1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(691, 118);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(256, 35);
+            this.textBox1.Size = new System.Drawing.Size(256, 30);
             this.textBox1.TabIndex = 11;
             this.textBox1.Text = "  Search";
+            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.service,
-            this.vehicleNo,
-            this.brand,
-            this.model,
-            this.date,
-            this.serviceProvider});
             this.dataGridView1.Location = new System.Drawing.Point(19, 168);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(928, 432);
             this.dataGridView1.TabIndex = 9;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Id";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.Width = 125;
-            // 
-            // service
-            // 
-            this.service.HeaderText = "Service";
-            this.service.MinimumWidth = 6;
-            this.service.Name = "service";
-            this.service.Width = 125;
-            // 
-            // vehicleNo
-            // 
-            this.vehicleNo.HeaderText = "Vehicle No";
-            this.vehicleNo.MinimumWidth = 6;
-            this.vehicleNo.Name = "vehicleNo";
-            this.vehicleNo.Width = 125;
-            // 
-            // brand
-            // 
-            this.brand.HeaderText = "Brand";
-            this.brand.MinimumWidth = 6;
-            this.brand.Name = "brand";
-            this.brand.Width = 125;
-            // 
-            // model
-            // 
-            this.model.HeaderText = "Model";
-            this.model.MinimumWidth = 6;
-            this.model.Name = "model";
-            this.model.Width = 125;
-            // 
-            // date
-            // 
-            this.date.HeaderText = "Date";
-            this.date.MinimumWidth = 6;
-            this.date.Name = "date";
-            this.date.Width = 125;
-            // 
-            // serviceProvider
-            // 
-            this.serviceProvider.HeaderText = "Service Provider";
-            this.serviceProvider.MinimumWidth = 6;
-            this.serviceProvider.Name = "serviceProvider";
-            this.serviceProvider.Width = 125;
             // 
             // button2
             // 
@@ -148,7 +86,7 @@ namespace Car_Service_Management_System
             // 
             // ServiceHistory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 625);
             this.Controls.Add(this.textBox1);
@@ -160,6 +98,7 @@ namespace Car_Service_Management_System
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ServiceHistory";
             this.Text = "Service History";
+            this.Load += new System.EventHandler(this.ServiceHistory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -171,13 +110,6 @@ namespace Car_Service_Management_System
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn service;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vehicleNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn brand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn model;
-        private System.Windows.Forms.DataGridViewTextBoxColumn date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serviceProvider;
         private System.Windows.Forms.Button button2;
     }
 }

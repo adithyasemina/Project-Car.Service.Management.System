@@ -13,7 +13,8 @@ namespace Car_Service_Management_System
 {
     public partial class Expense_Details : Form
     {
-        string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True";
+        //string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30";
+        string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30";
 
         public Expense_Details()
         {
@@ -61,46 +62,6 @@ namespace Car_Service_Management_System
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private int getId = 0;
-        /* Brian : This event is not working
-         *          The "Datetxt.Value" line also gives an error stating string isn't in proper format.
-                        -Try to change the string from DD/MM/YYYY to YYYY/MM/DD 
-                        -Else try to get only id column and fill the textboxes with values from the database.   */
 
         // Variable to store selected row
         int selectedId = 0;
@@ -112,7 +73,7 @@ namespace Car_Service_Management_System
             {
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
 
-                selectedId = Convert.ToInt32(selectedRow.Cells["Id"].Value);
+                selectedId = Convert.ToInt32(selectedRow.Cells["incomeId"].Value);
 
                 // MessageBox.Show("Clicked " + selectedId.ToString());
 
@@ -133,14 +94,16 @@ namespace Car_Service_Management_System
                         Datetxt.Value = Convert.ToDateTime(reader["date_income"]);
                     }
                     reader.Close();
+                    connect.Close();
                 }
             }
         }
 
+        // Add button Event
         private void button11_Click(object sender, EventArgs e)
         {
             if (Categorytxt.SelectedIndex == -1 || Itemtxt.Text == ""
-                || Costtxt.Text == "" || Descriptiontxt.Text == "")
+                || Costtxt.Text == "" || Descriptiontxt.Text == "" || txtexpenseId.Text == "")
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -149,12 +112,6 @@ namespace Car_Service_Management_System
                 using (SqlConnection connect = new SqlConnection(stringConnection))
                 {
                     connect.Open();
-
-                    // Brian : didn't have income id so added that to the query.
-
-                    /* Brain : assuming date_income --> @date_in  (The date user enters)
-                     *          and date_insert --> @date (The date the record was inserted)   
-                     *          From here and all events below      */
 
                     string insertData = "INSERT INTO Income (incomeId, category, item, cost, description, date_income,date_insert)" +
                         "VALUES(@id, @cat,@item,@income,@desc,@date_in, @date)";
@@ -168,13 +125,7 @@ namespace Car_Service_Management_System
                         cmd.Parameters.AddWithValue("@desc", Descriptiontxt.Text);
                         cmd.Parameters.AddWithValue("@date_in", Datetxt.Value);
 
-                        /*Brian : Commented out because error pops up. Cannot chang the value of a field 2 times in the same query.
-                         *          If necessary to take today's date uncomment it          */
-
-                        //cmd.Parameters.AddWithValue("@date", Datetxt.Value); 
-
-                        // Brian : Make the Key field(id) auto increment or Make a new textbox to enter Key field(id) value 
-                        cmd.Parameters.AddWithValue("@id", getId);
+                        cmd.Parameters.AddWithValue("@id", txtexpenseId);
 
 
                         DateTime today = DateTime.Now;
@@ -193,11 +144,11 @@ namespace Car_Service_Management_System
             displayExpensesdate();
         }
 
-        // Brian : Some fields were missing put them to complete query
+        // Update button event
         private void button12_Click(object sender, EventArgs e)
         {
             if (Categorytxt.SelectedIndex == -1 || Itemtxt.Text == ""
-               || Costtxt.Text == "" || Descriptiontxt.Text == "")
+               || Costtxt.Text == "" || Descriptiontxt.Text == "" || txtexpenseId.Text == "")
             {
                 MessageBox.Show("Please select item first", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -241,10 +192,11 @@ namespace Car_Service_Management_System
             displayExpensesdate();
         }
 
+        // Delete button event
         private void button13_Click(object sender, EventArgs e)
         {
             if (Categorytxt.SelectedIndex == -1 || Itemtxt.Text == ""
-                || Costtxt.Text == "" || Descriptiontxt.Text == "")
+                || Costtxt.Text == "" || Descriptiontxt.Text == "" || txtexpenseId.Text == "")
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -287,11 +239,22 @@ namespace Car_Service_Management_System
             Itemtxt.Text = "";
             Costtxt.Text = "";
             Descriptiontxt.Text = "";
+            txtexpenseId.Clear();
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
             clearFields();
+        }
+
+        private void Expense_Details_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

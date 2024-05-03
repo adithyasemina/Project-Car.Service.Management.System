@@ -22,41 +22,131 @@ namespace Car_Service_Management_System
             InitializeComponent();
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void Vehicle_Details_Landing_Page_Load(object sender, EventArgs e)
         {
+            panel2.Visible = false;
 
+            //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+
+            cmd.CommandText = "SELECT * FROM vehicleDetail";
+            SqlDataAdapter DA = new SqlDataAdapter(cmd);
+            DataSet DS = new DataSet();
+            DA.Fill(DS);
+
+            dataGridView2.DataSource = DS.Tables[0];
+
+            con.Close();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void button9_Click_1(object sender, EventArgs e)
-        {
-            Add_Vehicle_Details vd = new Add_Vehicle_Details();
+            Vehicles vd = new Vehicles();
             vd.Show();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void txtCID_TextChanged(object sender, EventArgs e)
         {
+            if (txtCID.Text != "")
+            {
+                //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+                con.Open();
 
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT * FROM vehicleDetail WHERE customerId LIKE '" + txtCID.Text + "%'";
+
+                SqlDataAdapter DA = new SqlDataAdapter(cmd);
+                DataSet DS = new DataSet();
+                DA.Fill(DS);
+                dataGridView2.DataSource = DS.Tables[0];
+
+                con.Close();
+            }
+            else
+            {
+                //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT * FROM vehicleDetail WHERE customerId LIKE '" + txtCID.Text + "%'";
+
+                SqlDataAdapter DA = new SqlDataAdapter(cmd);
+                DataSet DS = new DataSet();
+                DA.Fill(DS);
+                dataGridView2.DataSource = DS.Tables[0];
+
+                con.Close();
+            }
+        }
+
+        int cid;
+
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
+
+                cid = Convert.ToInt32(selectedRow.Cells["customerId"].Value);
+
+                //MessageBox.Show("Clicked " + cid);
+
+                using (SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30"))
+                {
+                    connect.Open();
+
+                    string pushData = $"SELECT * FROM vehicleDetail WHERE customerId = {cid}";
+                    SqlCommand command = new SqlCommand(pushData, connect);
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    panel2.Visible = true;
+
+                    if (reader.Read())           // Checks if there is a row to read
+                    {
+                        txtCustomerId.Text = reader["customerId"].ToString();
+                        txtCN.Text = reader["CustomerName"].ToString();
+                        txtVN.Text = reader["VehicleName"].ToString();
+                        txtVB.Text = reader["VehicleBrand"].ToString();
+                        txtVNum.Text = reader["VehicleNumber"].ToString();
+                        txtCT.Text = reader["CustomerTelNumber"].ToString();
+                        txtCNum.Text = reader["ChassisNumber"].ToString();
+                        txtFT.Text = reader["FuelType"].ToString();
+                        txtET.Text = reader["EngineType"].ToString();
+                        txtDate.Text = reader["Date"].ToString();
+                    }
+                    reader.Close();
+                    connect.Close();
+                }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Data will be Deleted.Confirm?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
+                //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+                con.Open();
+
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = "Delete from Table where Table_id=" + rowid + "";
+                cmd.CommandText = "Delete from vehicleDetail where customerId=" + cid + "";
                 SqlDataAdapter DA = new SqlDataAdapter(cmd);
                 DataSet DS = new DataSet();
                 DA.Fill(DS);
+                
                 Vehicle_Details_Landing_Page_Load(this, null);
 
+                con.Close();
             }
 
         }
@@ -69,110 +159,53 @@ namespace Car_Service_Management_System
             }
         }
 
-        private void Vehicle_Details_Landing_Page_Load(object sender, EventArgs e)
-        {
-            panel2.Visible = false;
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-
-            cmd.CommandText = "select * from Table";
-            SqlDataAdapter DA = new SqlDataAdapter(cmd);
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-
-            dataGridView2.DataSource = DS.Tables[0];
-        }
-
-        private void txtCID_TextChanged(object sender, EventArgs e)
-        {
-            if (txtCID.Text != "")
-            {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
-                cmd.CommandText = "select * from Table where Table_id LIKE '" + txtCID.Text + "%'";
-                SqlDataAdapter DA = new SqlDataAdapter(cmd);
-                DataSet DS = new DataSet();
-                DA.Fill(DS);
-                dataGridView2.DataSource = DS.Tables[0];
-            }
-            else
-            {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
-                cmd.CommandText = "select * from Table where Table_id LIKE '" + txtCID.Text + "%'";
-                SqlDataAdapter DA = new SqlDataAdapter(cmd);
-                DataSet DS = new DataSet();
-                DA.Fill(DS);
-                dataGridView2.DataSource = DS.Tables[0];
-            }
-        }
-
-
-        int cid;
-        Int64 rowid;
-
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                cid = int.Parse(dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString());
-            }
-            panel2.Visible = true;
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "select * from Table where Table_id=" + cid + "";
-            SqlDataAdapter DA = new SqlDataAdapter(cmd);
-            DataSet DS = new DataSet();
-            DA.Fill(DS);
-
-            rowid = Int64.Parse(DS.Tables[0].Rows[0][0].ToString());
-            txtCN.Text = DS.Tables[0].Rows[0][1].ToString();
-            txtVN.Text = DS.Tables[0].Rows[0][2].ToString();
-            txtVB.Text = DS.Tables[0].Rows[0][3].ToString();
-            txtVNum.Text = DS.Tables[0].Rows[0][4].ToString();
-            txtCT.Text = DS.Tables[0].Rows[0][5].ToString();
-            txtCNum.Text = DS.Tables[0].Rows[0][6].ToString();
-            txtFT.Text = DS.Tables[0].Rows[0][7].ToString();
-            txtET.Text = DS.Tables[0].Rows[0][8].ToString();
-            txtDate.Text = DS.Tables[0].Rows[0][8].ToString();
-        }
-
+        
         private void btNRef_Click(object sender, EventArgs e)
         {
             Vehicle_Details_Landing_Page_Load(this, null);
+            txtCID.Clear();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string Cname = txtCN.Text;
-            string Vname = txtVN.Text;
-            string Vbrand = txtVB.Text;
-            string Vnumber = txtVNum.Text;
-            Int64 Ctele = Int64.Parse(txtCT.Text);
-            string Chassisnum = txtCNum.Text;
-            String Ftype = txtFT.Text;
-            String Etype = txtET.Text;
-            String Date = txtDate.Text;
-
-            if (MessageBox.Show("Data will be Updedated.Confirm?", "succses", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (txtCN.Text == "" || txtCNum.Text == "" || txtCT.Text == "" || txtCustomerId.Text == "" || txtDate.Text == "" || txtET.Text == "" || txtFT.Text == "" || txtVB.Text == "" || txtVN.Text == "" || txtVNum.Text == "")
             {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Brian - Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True");
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
-
-                cmd.CommandText = "Update Table set name='" + Cname + "' ,Vname='" + Vname + "' ,Vbrand=" + Vbrand + " ,Vnumber='" + Vnumber + "' ,Ctele=" + Ctele + ",Chassisnum='" + Chassisnum + "',Ftype='" + Ftype + "',Etype='" + Etype + "',Date='" + Date + "'  where customer_id=" + cid + "";
-                SqlDataAdapter DA = new SqlDataAdapter(cmd);
-                DataSet DS = new DataSet();
-                DA.Fill(DS);
-                Vehicle_Details_Landing_Page_Load(this, null);
-
+                MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+            else
+            {
+                string Cname = txtCN.Text;
+                string Vname = txtVN.Text;
+                string Vbrand = txtVB.Text;
+                string Vnumber = txtVNum.Text;
+                int Ctele = int.Parse(txtCT.Text);
+                string Chassisnum = txtCNum.Text;
+                String Ftype = txtFT.Text;
+                String Etype = txtET.Text;
+                String Date = txtDate.Text;
+
+                if (MessageBox.Show("Data will be Updedated.Confirm?", "succses", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
+                    SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = con;
+
+                    cmd.CommandText = "UPDATE vehicleDetail SET CustomerName='" + Cname + "' ,VehicleName='" + Vname + "' ,VehicleBrand='" + Vbrand + "' ,VehicleNumber='" + Vnumber + "' ,CustomerTelNumber=" + Ctele + ",ChassisNumber='" + Chassisnum + "',FuelType='" + Ftype + "',EngineType='" + Etype + "',Date='" + Date + "'  WHERE customerId='" + cid + "'";
+                    SqlDataAdapter DA = new SqlDataAdapter(cmd);
+                    DataSet DS = new DataSet();
+                    DA.Fill(DS);
+                    Vehicle_Details_Landing_Page_Load(this, null);
+                    txtCID.Clear();
+
+                    con.Close();
+                }
+            }
+            
 
         }
+
     }
 }

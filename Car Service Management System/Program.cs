@@ -16,7 +16,7 @@ namespace Car_Service_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Inventory_Data_Landaing_Page());
+            Application.Run(new MainForm());
         }
     }
 

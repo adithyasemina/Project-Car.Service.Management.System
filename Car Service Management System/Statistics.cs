@@ -14,7 +14,6 @@ namespace Car_Service_Management_System
 {
     public partial class Statistics : Form
     {
-        //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30";
         string todayDate = DateTime.Now.ToString("dd-MMM-yy");
         //string todayDate = "01-Mar-24";
         //DateTime todayDate = DateTime.Now;
@@ -30,11 +29,13 @@ namespace Car_Service_Management_System
 
         private void Statistics_Load(object sender, EventArgs e)
         {
-            newOrders();
+            TodayOrders();
+            totalBookingsForMonth();
         }
 
-        void newOrders()
+        void TodayOrders()
         {
+            //using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30"))
             using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30"))
             {
                 string query = "SELECT COUNT(*) FROM tbl_calendar WHERE [date] = @TodayDate";
@@ -58,6 +59,36 @@ namespace Car_Service_Management_System
             }
 
         }
+
+
+        void totalBookingsForMonth()
+        {
+            // Get the current month and year
+            int currentMonth = DateTime.Now.Month;
+            int currentYear = DateTime.Now.Year;
+
+            // Construct the SQL query to count the bookings for the current month
+            string query = $"SELECT COUNT(*) FROM tbl_calendar WHERE MONTH(date) = {currentMonth} AND YEAR(date) = {currentYear}";
+
+            //using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30"))
+            using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30"))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        int totalBookings = (int)command.ExecuteScalar();
+                        label6.Text = Convert.ToString(totalBookings);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
