@@ -73,13 +73,40 @@ namespace Car_Service_Management_System
 
         private void btnEmployees_Click(object sender, EventArgs e)
         {
-            loadForm(new Employee());
+            if (AdminSession.isLoggedIn == true)
+            {
+                loadForm(new Employee());
+
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Only admins can access this page. Would you like to log in?", "Access Denied", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    loadForm(new Admin_Login());
+                }
+            }
 
         }
 
         private void btnStatics_Click(object sender, EventArgs e)
         {
-            loadForm(new Statistics());
+            if (AdminSession.isLoggedIn == true)
+            {
+                loadForm(new Statistics());
+
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Only admin can access this page. Would you like to log in?", "Access Denied", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    loadForm(new Admin_Login());
+                }
+            }
+
         }
 
     }

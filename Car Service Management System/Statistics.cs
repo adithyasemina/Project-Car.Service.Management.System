@@ -14,14 +14,6 @@ namespace Car_Service_Management_System
 {
     public partial class Statistics : Form
     {
-        string todayDate = DateTime.Now.ToString("dd-MMM-yy");
-        //string todayDate = "01-Mar-24";
-        //DateTime todayDate = DateTime.Now;
-
-
-        int numberOfBookings = 0;
-
-
         public Statistics()
         {
             InitializeComponent();
@@ -31,14 +23,18 @@ namespace Car_Service_Management_System
         {
             TodayOrders();
             totalBookingsForMonth();
+            remainingBookingsToday();
+            CalculateMonthExpense();
         }
 
         void TodayOrders()
         {
-            //using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30"))
-            using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30"))
+            using (SqlConnection connection = new SqlConnection(DatabaseConnection.connectionString))
             {
-                string query = "SELECT COUNT(*) FROM tbl_calendar WHERE [date] = @TodayDate";
+                int numberOfBookings = 0;
+                string todayDate = DateTime.Now.ToString("dd-MMM-yyyy");
+
+                string query = "SELECT COUNT(*) FROM tbl_calendar WHERE date = @TodayDate";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@TodayDate", todayDate);
 
@@ -70,8 +66,7 @@ namespace Car_Service_Management_System
             // Construct the SQL query to count the bookings for the current month
             string query = $"SELECT COUNT(*) FROM tbl_calendar WHERE MONTH(date) = {currentMonth} AND YEAR(date) = {currentYear}";
 
-            //using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30"))
-            using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30"))
+            using (SqlConnection connection = new SqlConnection(DatabaseConnection.connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -89,6 +84,82 @@ namespace Car_Service_Management_System
             }
         }
 
+        void remainingBookingsToday()
+        {
+            using (SqlConnection connection = new SqlConnection(DatabaseConnection.connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Get the current date and time
+                    DateTime now = DateTime.Now;
+
+                    string query = "SELECT COUNT(*) FROM tbl_calendar WHERE date = @Date AND time >= @Time";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Date", now.Date);
+                    command.Parameters.AddWithValue("@Time", now.TimeOfDay);
+
+                    int remainingBookings = (int)command.ExecuteScalar();
+
+                    label9.Text = remainingBookings.ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        void CalculateMonthExpense()
+        {
+            using (SqlConnection connection = new SqlConnection(DatabaseConnection.connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Get the first day of the current month
+                    DateTime firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
+                    // Get the last day of the current month
+                    DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+                    string query = "SELECT SUM(cost) FROM Income WHERE date_income >= @FirstDayOfMonth AND date_income <= @LastDayOfMonth";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@FirstDayOfMonth", firstDayOfMonth);
+                    command.Parameters.AddWithValue("@LastDayOfMonth", lastDayOfMonth);
+
+                    object result = command.ExecuteScalar();
+                    if (result != DBNull.Value)
+                    {
+                        decimal totalExpense = Convert.ToDecimal(result);
+
+                        label12.Text = totalExpense.ToString("C"); // Format as currency
+                    }
+                    else
+                    {
+                        label12.Text = "$ 0";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                AdminSession.isLoggedIn = false;
+
+                this.Close();
+            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -125,5 +196,6 @@ namespace Car_Service_Management_System
 
         }
 
+        
     }
 }

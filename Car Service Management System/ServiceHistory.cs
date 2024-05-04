@@ -14,7 +14,7 @@ namespace Car_Service_Management_System
 
     public partial class ServiceHistory : Form
     {
-        readonly SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection con = new SqlConnection(DatabaseConnection.connectionString);
 
         public ServiceHistory()
         {
@@ -40,7 +40,6 @@ namespace Car_Service_Management_System
 
             da.Fill(table);
 
-            // Brian: Changed from dataGridView1 to dataGridView2 because i didn't see any changes when kept in dataGridView1
             dataGridView1.DataSource = table;
         }
 
@@ -49,8 +48,7 @@ namespace Car_Service_Management_System
 
             if (textBox1.Text != "")
             {
-                //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+                SqlConnection con = new SqlConnection(DatabaseConnection.connectionString);
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -69,6 +67,8 @@ namespace Car_Service_Management_System
         private void textBox1_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
+            fillServiceTable();
         }
+
     }
 }

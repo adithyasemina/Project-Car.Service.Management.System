@@ -10,11 +10,10 @@ namespace Car_Service_Management_System
 {
     class Expensesdate
     {
-        //string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30";
-        string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30";
+        string stringConnection = DatabaseConnection.connectionString;
 
 
-        public int ID { set; get; }
+        public int incomeId { set; get; }
         public string Category { set; get; }
         public string Item { set; get; }
         public string Cost { set; get; }
@@ -38,7 +37,7 @@ namespace Car_Service_Management_System
                     while (reader.Read())
                     {
                         Expensesdate iData = new Expensesdate();
-                        iData.ID = (int)reader["incomeId"];
+                        iData.incomeId = (int)reader["incomeId"];
                         iData.Category = reader["category"].ToString();
                         iData.Item = reader["item"].ToString();
                         iData.Cost = reader["cost"].ToString();

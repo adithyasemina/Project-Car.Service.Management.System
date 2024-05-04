@@ -26,8 +26,7 @@ namespace Car_Service_Management_System
         {
             panel2.Visible = false;
 
-            //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(DatabaseConnection.connectionString);
             con.Open();
 
             SqlCommand cmd = new SqlCommand();
@@ -53,8 +52,20 @@ namespace Car_Service_Management_System
         {
             if (txtCID.Text != "")
             {
-                //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+                panel2.Visible = false;
+
+                txtCN.Clear();
+                txtCustomerId.Clear();
+                txtVN.Clear();
+                txtCNum.Clear();
+                txtVB.Clear();
+                txtFT.Clear();
+                txtVNum.Clear();
+                txtET.Clear();
+                txtCT.Clear();
+                txtDate.Clear();
+
+                SqlConnection con = new SqlConnection(DatabaseConnection.connectionString);
                 con.Open();
 
                 SqlCommand cmd = new SqlCommand();
@@ -70,8 +81,7 @@ namespace Car_Service_Management_System
             }
             else
             {
-                //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+                SqlConnection con = new SqlConnection(DatabaseConnection.connectionString);
                 con.Open();
 
                 SqlCommand cmd = new SqlCommand();
@@ -95,36 +105,51 @@ namespace Car_Service_Management_System
             {
                 DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
 
-                cid = Convert.ToInt32(selectedRow.Cells["customerId"].Value);
-
-                //MessageBox.Show("Clicked " + cid);
-
-                using (SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30"))
+                if (selectedRow.Cells["customerId"].Value != null)
                 {
-                    connect.Open();
-
-                    string pushData = $"SELECT * FROM vehicleDetail WHERE customerId = {cid}";
-                    SqlCommand command = new SqlCommand(pushData, connect);
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    panel2.Visible = true;
-
-                    if (reader.Read())           // Checks if there is a row to read
+                    try
                     {
-                        txtCustomerId.Text = reader["customerId"].ToString();
-                        txtCN.Text = reader["CustomerName"].ToString();
-                        txtVN.Text = reader["VehicleName"].ToString();
-                        txtVB.Text = reader["VehicleBrand"].ToString();
-                        txtVNum.Text = reader["VehicleNumber"].ToString();
-                        txtCT.Text = reader["CustomerTelNumber"].ToString();
-                        txtCNum.Text = reader["ChassisNumber"].ToString();
-                        txtFT.Text = reader["FuelType"].ToString();
-                        txtET.Text = reader["EngineType"].ToString();
-                        txtDate.Text = reader["Date"].ToString();
+                        cid = Convert.ToInt32(selectedRow.Cells["customerId"].Value);
+
+                        //MessageBox.Show("Clicked " + cid);
+
+                        using (SqlConnection connect = new SqlConnection(DatabaseConnection.connectionString))
+                        {
+                            connect.Open();
+
+                            string pushData = $"SELECT * FROM vehicleDetail WHERE customerId = {cid}";
+                            SqlCommand command = new SqlCommand(pushData, connect);
+                            SqlDataReader reader = command.ExecuteReader();
+
+                            panel2.Visible = true;
+
+                            if (reader.Read())           // Checks if there is a row to read
+                            {
+                                txtCustomerId.Text = reader["customerId"].ToString();
+                                txtCN.Text = reader["CustomerName"].ToString();
+                                txtVN.Text = reader["VehicleName"].ToString();
+                                txtVB.Text = reader["VehicleBrand"].ToString();
+                                txtVNum.Text = reader["VehicleNumber"].ToString();
+                                txtCT.Text = "0" + reader["CustomerTelNumber"].ToString();
+                                txtCNum.Text = reader["ChassisNumber"].ToString();
+                                txtFT.Text = reader["FuelType"].ToString();
+                                txtET.Text = reader["EngineType"].ToString();
+                                txtDate.Text = reader["Date"].ToString();
+                            }
+                            reader.Close();
+                            connect.Close();
+                        }
                     }
-                    reader.Close();
-                    connect.Close();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Customer Id value is null.", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                }
+
             }
         }
 
@@ -132,21 +157,35 @@ namespace Car_Service_Management_System
         {
             if (MessageBox.Show("Data will be Deleted.Confirm?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
-                con.Open();
+                if (cid < 0)
+                {
+                    MessageBox.Show("Invalid Cutomer ID. Please select a valid row", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    try
+                    {
+                        SqlConnection con = new SqlConnection(DatabaseConnection.connectionString);
+                        con.Open();
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = con;
 
-                cmd.CommandText = "Delete from vehicleDetail where customerId=" + cid + "";
-                SqlDataAdapter DA = new SqlDataAdapter(cmd);
-                DataSet DS = new DataSet();
-                DA.Fill(DS);
-                
-                Vehicle_Details_Landing_Page_Load(this, null);
+                        cmd.CommandText = "Delete from vehicleDetail where customerId=" + cid + "";
+                        SqlDataAdapter DA = new SqlDataAdapter(cmd);
+                        DataSet DS = new DataSet();
+                        DA.Fill(DS);
 
-                con.Close();
+                        Vehicle_Details_Landing_Page_Load(this, null);
+
+                        con.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred while deleting record : " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
             }
 
         }
@@ -168,10 +207,18 @@ namespace Car_Service_Management_System
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (txtCN.Text == "" || txtCNum.Text == "" || txtCT.Text == "" || txtCustomerId.Text == "" || txtDate.Text == "" || txtET.Text == "" || txtFT.Text == "" || txtVB.Text == "" || txtVN.Text == "" || txtVNum.Text == "")
+            if (string.IsNullOrWhiteSpace(txtCN.Text) || string.IsNullOrWhiteSpace(txtCNum.Text) || string.IsNullOrWhiteSpace(txtCT.Text) || string.IsNullOrWhiteSpace(txtCustomerId.Text) || string.IsNullOrWhiteSpace(txtDate.Text) || string.IsNullOrWhiteSpace(txtET.Text) || string.IsNullOrWhiteSpace(txtFT.Text) || string.IsNullOrWhiteSpace(txtVB.Text) || string.IsNullOrWhiteSpace(txtVN.Text) || string.IsNullOrWhiteSpace(txtVNum.Text))
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
+            else if (!applicationValidations.IsNumeric(txtCT.Text) || (txtCT.Text.Length != 10 && txtCT.Text.Length != 12))
+            {
+                MessageBox.Show("Please enter a valid positive numeric value for Contact Number", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (cid < 0)
+            {
+                MessageBox.Show("Invalid Customer ID. Please select a valid row ", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -179,7 +226,7 @@ namespace Car_Service_Management_System
                 string Vname = txtVN.Text;
                 string Vbrand = txtVB.Text;
                 string Vnumber = txtVNum.Text;
-                int Ctele = int.Parse(txtCT.Text);
+                long Ctele = long.Parse(txtCT.Text);
                 string Chassisnum = txtCNum.Text;
                 String Ftype = txtFT.Text;
                 String Etype = txtET.Text;
@@ -187,23 +234,30 @@ namespace Car_Service_Management_System
 
                 if (MessageBox.Show("Data will be Updedated.Confirm?", "succses", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
-                    SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = con;
+                    try
+                    {
+                        SqlConnection con = new SqlConnection(DatabaseConnection.connectionString);
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = con;
 
-                    cmd.CommandText = "UPDATE vehicleDetail SET CustomerName='" + Cname + "' ,VehicleName='" + Vname + "' ,VehicleBrand='" + Vbrand + "' ,VehicleNumber='" + Vnumber + "' ,CustomerTelNumber=" + Ctele + ",ChassisNumber='" + Chassisnum + "',FuelType='" + Ftype + "',EngineType='" + Etype + "',Date='" + Date + "'  WHERE customerId='" + cid + "'";
-                    SqlDataAdapter DA = new SqlDataAdapter(cmd);
-                    DataSet DS = new DataSet();
-                    DA.Fill(DS);
-                    Vehicle_Details_Landing_Page_Load(this, null);
-                    txtCID.Clear();
+                        cmd.CommandText = "UPDATE vehicleDetail SET CustomerName='" + Cname + "' ,VehicleName='" + Vname + "' ,VehicleBrand='" + Vbrand + "' ,VehicleNumber='" + Vnumber + "' ,CustomerTelNumber=" + Ctele + ",ChassisNumber='" + Chassisnum + "',FuelType='" + Ftype + "',EngineType='" + Etype + "',Date='" + Date + "'  WHERE customerId='" + cid + "'";
+                        SqlDataAdapter DA = new SqlDataAdapter(cmd);
+                        DataSet DS = new DataSet();
+                        DA.Fill(DS);
+                        Vehicle_Details_Landing_Page_Load(this, null);
+                        txtCID.Clear();
 
-                    con.Close();
+                        con.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occured when deleting record : " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
             }
-            
+
 
         }
 

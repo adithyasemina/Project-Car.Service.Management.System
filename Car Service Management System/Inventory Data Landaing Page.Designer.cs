@@ -33,14 +33,13 @@ namespace Car_Service_Management_System
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inventory_Data_Landaing_Page));
             this.btnaddproduct = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.TextBox();
             this.txtmaintaincost = new System.Windows.Forms.TextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.txtprice = new System.Windows.Forms.TextBox();
             this.txtquantity = new System.Windows.Forms.TextBox();
             this.txtproductname = new System.Windows.Forms.TextBox();
@@ -51,7 +50,8 @@ namespace Car_Service_Management_System
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -59,32 +59,24 @@ namespace Car_Service_Management_System
             // btnaddproduct
             // 
             resources.ApplyResources(this.btnaddproduct, "btnaddproduct");
+            this.btnaddproduct.BackColor = System.Drawing.Color.Silver;
             this.btnaddproduct.Name = "btnaddproduct";
-            this.btnaddproduct.UseVisualStyleBackColor = true;
+            this.btnaddproduct.UseVisualStyleBackColor = false;
             this.btnaddproduct.Click += new System.EventHandler(this.btnaddproduct_Click);
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
             // 
             // textBox1
             // 
             this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
+            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnDelete
             // 
             resources.ApplyResources(this.btnDelete, "btnDelete");
-            this.btnDelete.BackColor = System.Drawing.Color.DimGray;
-            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(46)))), ((int)(((byte)(54)))));
+            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(75)))), ((int)(((byte)(76)))));
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -92,7 +84,7 @@ namespace Car_Service_Management_System
             // dataGridView1
             // 
             resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDark;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(65)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.WindowFrame;
             this.dataGridView1.Name = "dataGridView1";
@@ -101,10 +93,12 @@ namespace Car_Service_Management_System
             // panel3
             // 
             resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.BackColor = System.Drawing.Color.DarkGray;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(65)))));
             this.panel3.Controls.Add(this.dateTimePicker1);
             this.panel3.Controls.Add(this.txtmaintaincost);
+            this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Controls.Add(this.txtprice);
+            this.panel3.Controls.Add(this.btnDelete);
             this.panel3.Controls.Add(this.txtquantity);
             this.panel3.Controls.Add(this.txtproductname);
             this.panel3.Controls.Add(this.txtproductid);
@@ -127,6 +121,15 @@ namespace Car_Service_Management_System
             resources.ApplyResources(this.txtmaintaincost, "txtmaintaincost");
             this.txtmaintaincost.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtmaintaincost.Name = "txtmaintaincost";
+            // 
+            // btnUpdate
+            // 
+            resources.ApplyResources(this.btnUpdate, "btnUpdate");
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(55)))), ((int)(((byte)(63)))));
+            this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(220)))), ((int)(((byte)(147)))));
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // txtprice
             // 
@@ -155,55 +158,62 @@ namespace Car_Service_Management_System
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
+            this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label8.Name = "label8";
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label6.Name = "label6";
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Name = "label5";
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Name = "label4";
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Name = "label3";
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Name = "label2";
             // 
-            // btnUpdate
+            // label9
             // 
-            resources.ApplyResources(this.btnUpdate, "btnUpdate");
-            this.btnUpdate.BackColor = System.Drawing.Color.DimGray;
-            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Name = "label9";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Name = "label7";
             // 
             // Inventory_Data_Landaing_Page
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGray;
-            this.Controls.Add(this.btnaddproduct);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.panel3);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(43)))), ((int)(((byte)(52)))));
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.btnaddproduct);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Inventory_Data_Landaing_Page";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -217,9 +227,7 @@ namespace Car_Service_Management_System
         }
 
         #endregion
-        private Label label7;
         private Button btnaddproduct;
-        private Label label1;
         private TextBox textBox1;
         private Button btnDelete;
         private DataGridView dataGridView1;
@@ -237,5 +245,7 @@ namespace Car_Service_Management_System
         private TextBox txtproductname;
         private TextBox txtproductid;
         private Button btnUpdate;
+        private Label label9;
+        private Label label7;
     }
 }

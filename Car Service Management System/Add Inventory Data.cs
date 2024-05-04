@@ -22,15 +22,23 @@ namespace Car_Service_Management_System
 
         private void btnsave_Click(object sender, EventArgs e)
         {
-            if (txtproductid.Text == "" || txtproductname.Text == "" || txtquantity.Text == "" || txtprice.Text == "" || txtmaintaincost.Text == "" )
+            if (string.IsNullOrWhiteSpace(txtproductid.Text) || string.IsNullOrWhiteSpace(txtproductname.Text) || string.IsNullOrWhiteSpace(txtquantity.Text) || string.IsNullOrWhiteSpace(txtprice.Text) || string.IsNullOrWhiteSpace(txtmaintaincost.Text))
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (!applicationValidations.IsNumeric(txtquantity.Text) || !applicationValidations.IsNumeric(txtprice.Text) || !applicationValidations.IsNumeric(txtmaintaincost.Text))
+            {
+                MessageBox.Show("Quantity, Price, and Maintain Cost must be numeric values", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (decimal.Parse(txtprice.Text) <= 0 || decimal.Parse(txtquantity.Text) <= 0 || decimal.Parse(txtmaintaincost.Text) <= 0)
+            {
+                MessageBox.Show("Price must be a positive value", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 try
                 {
-                    using (SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30"))
+                    using (SqlConnection connect = new SqlConnection(DatabaseConnection.connectionString))
                     {
                         connect.Open();
 
@@ -58,7 +66,7 @@ namespace Car_Service_Management_System
                     MessageBox.Show(ex.Message);
                 }
 
-            } 
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -69,7 +77,7 @@ namespace Car_Service_Management_System
         private void btnBack_Click(object sender, EventArgs e)
         {
             // Show Inventory_Data_Landaing_Page
-            Application.OpenForms["Inventory_Data_Landaing_Page"].Show();
+           //pplication.OpenForms["Inventory_Data_Landaing_Page"].Show();
 
             // Close form2
             this.Close();

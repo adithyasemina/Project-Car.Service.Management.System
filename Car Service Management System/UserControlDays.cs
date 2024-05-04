@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Car_Service_Management_System
 {
     public partial class UserControlDays : UserControl
@@ -32,7 +33,15 @@ namespace Car_Service_Management_System
 
         public void days(int numday)
         {
-            lbdays.Text = numday + "";
+            if (numday <= 9)
+            {
+                lbdays.Text = "0" + numday + "";
+            }
+            else
+            {
+                lbdays.Text = numday + "";
+            }
+
         }
 
         private void UserControlDays_Click(object sender, EventArgs e)

@@ -13,8 +13,7 @@ namespace Car_Service_Management_System
 {
     public partial class AddService : Form
     {
-        //SqlConnection con1 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30");
-        SqlConnection con1 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection con1 = new SqlConnection(DatabaseConnection.connectionString);
 
         public AddService()
         {
@@ -29,9 +28,13 @@ namespace Car_Service_Management_System
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            if (txtId.Text == "" || txtService.Text == "" || txtVehicleNo.Text == ""|| txtBrand.Text == "" || txtModel.Text == "" || txtSProvider.Text == "")
+            if (string.IsNullOrWhiteSpace(txtId.Text) || string.IsNullOrWhiteSpace(txtService.Text) || string.IsNullOrWhiteSpace(txtVehicleNo.Text) || string.IsNullOrWhiteSpace(txtBrand.Text) || string.IsNullOrWhiteSpace(txtModel.Text) || string.IsNullOrWhiteSpace(txtSProvider.Text))
             {
-                MessageBox.Show("Please fill all the boxes first", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please fill all the textboxes", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (!applicationValidations.IsNumeric(txtId.Text) || int.Parse(txtId.Text) <= 0)
+            {
+                MessageBox.Show("ID must be a positive integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -43,7 +46,7 @@ namespace Car_Service_Management_System
                 DateTime date = dateTimePicker1.Value;
                 string serviceProvider = txtSProvider.Text;
 
-                if (MessageBox.Show("Are you sure you want to Add record : " + id + "?","Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to Add record : " + id + "?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     string query = "INSERT INTO serviceHistory(serviceId, service, vehicleNo, brand, model, date, serviceProvider) VALUES (@id, @service, @vehicleNo, @brand, @model, @date, @serviceProvider)";
 
@@ -77,7 +80,7 @@ namespace Car_Service_Management_System
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (txtId.Text == "")
+            if (string.IsNullOrWhiteSpace(txtId.Text))
             {
                 MessageBox.Show("Please fill the ID box first", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -102,43 +105,58 @@ namespace Car_Service_Management_System
                     MessageBox.Show(ex.Message);
                 }
             }
-            
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(txtId.Text);
-            string service = txtService.Text;
-            string vehicleNo = txtVehicleNo.Text;
-            string brand = txtBrand.Text;
-            string model = txtModel.Text;
-            DateTime date = DateTime.Today;
-            string serviceProvider = txtSProvider.Text;
-
-            string query = $"update serviceHistory SET service = @service, vehicleNo = @vehicleNo, brand = @brand, model = @model, date = @date, serviceProvider = @service WHERE serviceId = @id";
-
-            SqlCommand cmd = new SqlCommand(query, con1);
-
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@service", service);
-            cmd.Parameters.AddWithValue("@vehicleNo", vehicleNo);
-            cmd.Parameters.AddWithValue("@brand", brand);
-            cmd.Parameters.AddWithValue("@model", model);
-            cmd.Parameters.AddWithValue("@date", date);
-            cmd.Parameters.AddWithValue("@serviceProvider", serviceProvider);
-
-            try
+            if (string.IsNullOrWhiteSpace(txtId.Text) || string.IsNullOrWhiteSpace(txtService.Text) || string.IsNullOrWhiteSpace(txtVehicleNo.Text) || string.IsNullOrWhiteSpace(txtBrand.Text) || string.IsNullOrWhiteSpace(txtModel.Text) || string.IsNullOrWhiteSpace(txtSProvider.Text))
             {
-                con1.Open();
-                cmd.ExecuteNonQuery();
-                con1.Close();
-                MessageBox.Show("Successfully updated Value");
-
+                MessageBox.Show("Please fill all the textboxes", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            catch (SqlException ex)
+            else if (!applicationValidations.IsNumeric(txtId.Text) || int.Parse(txtId.Text) <= 0)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("ID must be a positive integer", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (dateTimePicker1.Value > DateTime.Today)
+            {
+                MessageBox.Show("Enter a valid Date", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int id = int.Parse(txtId.Text);
+                string service = txtService.Text;
+                string vehicleNo = txtVehicleNo.Text;
+                string brand = txtBrand.Text;
+                string model = txtModel.Text;
+                DateTime date = DateTime.Today;
+                string serviceProvider = txtSProvider.Text;
+
+                string query = $"update serviceHistory SET service = @service, vehicleNo = @vehicleNo, brand = @brand, model = @model, date = @date, serviceProvider = @service WHERE serviceId = @id";
+
+                SqlCommand cmd = new SqlCommand(query, con1);
+
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@service", service);
+                cmd.Parameters.AddWithValue("@vehicleNo", vehicleNo);
+                cmd.Parameters.AddWithValue("@brand", brand);
+                cmd.Parameters.AddWithValue("@model", model);
+                cmd.Parameters.AddWithValue("@date", date);
+                cmd.Parameters.AddWithValue("@serviceProvider", serviceProvider);
+
+                try
+                {
+                    con1.Open();
+                    cmd.ExecuteNonQuery();
+                    con1.Close();
+                    MessageBox.Show("Successfully updated Value");
+
+                }
+
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 

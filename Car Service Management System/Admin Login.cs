@@ -24,24 +24,30 @@ namespace Car_Service_Management_System
             username = txtBoxUsername.Text;
             password = txtBoxPassword.Text;
 
-            if (username == "ADMIN" && password == "admin123")
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                AdminSession.isLoggedIn = true;
-
-                txtBoxUsername.Clear();
-                txtBoxPassword.Clear();
-
-                // Load form2 and hide form1
-                Admin_Login_Followup form2 = new Admin_Login_Followup();
-                form2.Show();
-                this.Hide();
+                MessageBox.Show("Please enter both username and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                txtBoxUsername.Clear();
-                txtBoxPassword.Clear();
+                if (username == "ADMIN" && password == "admin123")
+                {
+                    AdminSession.isLoggedIn = true;
 
-                MessageBox.Show("Please enter correct username and password for Admin Login", "Error", MessageBoxButtons.OK);
+                    txtBoxUsername.Clear();
+                    txtBoxPassword.Clear();
+
+                    MessageBox.Show("Admin login was successful. Click to view pages", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.Close();
+                }
+                else
+                {
+                    txtBoxUsername.Clear();
+                    txtBoxPassword.Clear();
+
+                    MessageBox.Show("Please enter correct username and password for Admin Login", "Error", MessageBoxButtons.OK);
+                }
             }
         }
 

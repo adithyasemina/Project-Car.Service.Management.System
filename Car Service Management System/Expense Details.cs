@@ -13,8 +13,7 @@ namespace Car_Service_Management_System
 {
     public partial class Expense_Details : Form
     {
-        //string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final connections\Car Service Management System\Database\CarManagementDatabase.mdf"";Integrated Security=True;Connect Timeout=30";
-        string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C# Practice\Car Service Management System\Car Service Management System\Database\CarManagementDatabase.mdf;Integrated Security=True;Connect Timeout=30";
+        string stringConnection = DatabaseConnection.connectionString;
 
         public Expense_Details()
         {
@@ -73,28 +72,43 @@ namespace Car_Service_Management_System
             {
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
 
-                selectedId = Convert.ToInt32(selectedRow.Cells["incomeId"].Value);
-
-                // MessageBox.Show("Clicked " + selectedId.ToString());
-
-                using (SqlConnection connect = new SqlConnection(stringConnection))
+                if (selectedRow.Cells["incomeId"].Value != null)
                 {
-                    connect.Open();
-
-                    string pushData = $"SELECT * FROM Income WHERE incomeId = {selectedId}";
-                    SqlCommand command = new SqlCommand(pushData, connect);
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.Read())           // Checks if there is a row to read
+                    try
                     {
-                        Categorytxt.SelectedItem = reader["category"].ToString();
-                        Itemtxt.Text = reader["item"].ToString();
-                        Costtxt.Text = reader["cost"].ToString();
-                        Descriptiontxt.Text = reader["description"].ToString();
-                        Datetxt.Value = Convert.ToDateTime(reader["date_income"]);
+                        selectedId = Convert.ToInt32(selectedRow.Cells["incomeId"].Value);
+
+                        // MessageBox.Show("Clicked " + selectedId.ToString());
+
+                        using (SqlConnection connect = new SqlConnection(stringConnection))
+                        {
+                            connect.Open();
+
+                            string pushData = $"SELECT * FROM Income WHERE incomeId = {selectedId}";
+                            SqlCommand command = new SqlCommand(pushData, connect);
+                            SqlDataReader reader = command.ExecuteReader();
+
+                            if (reader.Read())           // Checks if there is a row to read
+                            {
+                                txtexpenseId.Text = reader["incomeId"].ToString();
+                                Categorytxt.SelectedItem = reader["category"].ToString();
+                                Itemtxt.Text = reader["item"].ToString();
+                                Costtxt.Text = reader["cost"].ToString();
+                                Descriptiontxt.Text = reader["description"].ToString();
+                                Datetxt.Value = Convert.ToDateTime(reader["date_income"]);
+                            }
+                            reader.Close();
+                            connect.Close();
+                        }
                     }
-                    reader.Close();
-                    connect.Close();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("IncomeId value is null.", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 }
             }
         }
@@ -102,61 +116,83 @@ namespace Car_Service_Management_System
         // Add button Event
         private void button11_Click(object sender, EventArgs e)
         {
-            if (Categorytxt.SelectedIndex == -1 || Itemtxt.Text == ""
-                || Costtxt.Text == "" || Descriptiontxt.Text == "" || txtexpenseId.Text == "")
+            if (Categorytxt.SelectedIndex == -1 || string.IsNullOrWhiteSpace(Itemtxt.Text)
+                || string.IsNullOrWhiteSpace(Costtxt.Text) || string.IsNullOrWhiteSpace(Descriptiontxt.Text) || string.IsNullOrWhiteSpace(txtexpenseId.Text))
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                using (SqlConnection connect = new SqlConnection(stringConnection))
+                try
                 {
-                    connect.Open();
-
-                    string insertData = "INSERT INTO Income (incomeId, category, item, cost, description, date_income,date_insert)" +
-                        "VALUES(@id, @cat,@item,@income,@desc,@date_in, @date)";
-
-                    using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                    if (!int.TryParse(txtexpenseId.Text, out _) || int.Parse(txtexpenseId.Text) < 0)
                     {
-
-                        cmd.Parameters.AddWithValue("@cat", Categorytxt.SelectedItem);
-                        cmd.Parameters.AddWithValue("@item", Itemtxt.Text);
-                        cmd.Parameters.AddWithValue("@income", Costtxt.Text);
-                        cmd.Parameters.AddWithValue("@desc", Descriptiontxt.Text);
-                        cmd.Parameters.AddWithValue("@date_in", Datetxt.Value);
-
-                        cmd.Parameters.AddWithValue("@id", txtexpenseId);
-
-
-                        DateTime today = DateTime.Now;
-                        cmd.Parameters.AddWithValue("@date", today);
-
-                        cmd.ExecuteNonQuery();
-                        clearFields();
-
-                        MessageBox.Show("Added successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        MessageBox.Show("Invalid income ID. Please enter a valid positive numeric value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    connect.Close();
+                    using (SqlConnection connect = new SqlConnection(stringConnection))
+                    {
+                        connect.Open();
+
+                        string insertData = "INSERT INTO Income (incomeId, category, item, cost, description, date_income,date_insert)" +
+                            "VALUES(@id, @cat,@item,@income,@desc,@date_in, @date)";
+
+                        using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                        {
+
+                            cmd.Parameters.AddWithValue("@cat", Categorytxt.SelectedItem);
+                            cmd.Parameters.AddWithValue("@item", Itemtxt.Text);
+                            cmd.Parameters.AddWithValue("@income", Costtxt.Text);
+                            cmd.Parameters.AddWithValue("@desc", Descriptiontxt.Text);
+                            cmd.Parameters.AddWithValue("@date_in", Datetxt.Value);
+
+                            cmd.Parameters.AddWithValue("@id", txtexpenseId.Text);
+
+
+                            DateTime today = DateTime.Now;
+                            cmd.Parameters.AddWithValue("@date", today);
+
+                            cmd.ExecuteNonQuery();
+                            clearFields();
+
+                            MessageBox.Show("Added successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+
+                        connect.Close();
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while adding income: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                finally
+                {
+                    displayExpensesdate();
                 }
             }
-            displayExpensesdate();
         }
 
         // Update button event
         private void button12_Click(object sender, EventArgs e)
         {
-            if (Categorytxt.SelectedIndex == -1 || Itemtxt.Text == ""
-               || Costtxt.Text == "" || Descriptiontxt.Text == "" || txtexpenseId.Text == "")
+            if (Categorytxt.SelectedIndex == -1 || string.IsNullOrWhiteSpace(Itemtxt.Text)
+                || string.IsNullOrWhiteSpace(Costtxt.Text) || string.IsNullOrWhiteSpace(Descriptiontxt.Text) || string.IsNullOrWhiteSpace(txtexpenseId.Text))
             {
-                MessageBox.Show("Please select item first", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (MessageBox.Show("Are you sure you want to Update Id: " + selectedId + "?",
                     "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    if (selectedId < 0)
+                    {
+                        MessageBox.Show("Invalid income ID. Please select a valid row.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                     using (SqlConnection connect = new SqlConnection(stringConnection))
                     {
                         connect.Open();
@@ -195,10 +231,9 @@ namespace Car_Service_Management_System
         // Delete button event
         private void button13_Click(object sender, EventArgs e)
         {
-            if (Categorytxt.SelectedIndex == -1 || Itemtxt.Text == ""
-                || Costtxt.Text == "" || Descriptiontxt.Text == "" || txtexpenseId.Text == "")
+            if (selectedId < 0)
             {
-                MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid income ID. Please select a valid row.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
