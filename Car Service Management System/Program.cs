@@ -28,7 +28,7 @@ namespace Car_Service_Management_System
 
     public class DatabaseConnection
     {
-        public static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\Final\Car Service Management System\Database1.mdf"";Integrated Security=True";
+        public static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\ASUS\Desktop\yet be uopload\Project-Car.Service.Management.System\Car Service Management System\Database2.mdf"";Integrated Security=True";
     }
 
     public class applicationValidations

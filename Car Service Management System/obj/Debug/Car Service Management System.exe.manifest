@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CLNpTHIw4WWfvdsI0wd9pGNhlGzXt/IsC4lovkmC3HM=</dsig:DigestValue>
+        <dsig:DigestValue>Zo+tVj1sGbkzpYjstp6RXu+dYI+/sGhi9ulASrmDk0o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -68,7 +68,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>/Ph91NXry6Rs34EejDX75pkIeP0eud+tvM36TsTzrfQ=</dsig:DigestValue>
+      <dsig:DigestValue>9qFxDh1Vw/DLz9Oc4sFo71avL5aqWaVSeT1P9ltpNP8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database\CarManagementDatabase_log.ldf" size="8388608" writeableType="applicationData">
@@ -77,7 +77,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>c0BTyyDFcsg/xSD2m8wnOVVeI4+X059bD6C5gqHzgO0=</dsig:DigestValue>
+      <dsig:DigestValue>YSg2CxwOWsLwpSFe4h4KtEip04+p7X3sNWE53L1DgaM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database1.mdf" size="8388608" writeableType="applicationData">
@@ -86,7 +86,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>BzabSNIhLKajI5+l4WSwTTDtM3jjxpdKbJPSVV5L+os=</dsig:DigestValue>
+      <dsig:DigestValue>k9Fps+w+EHn95kPbbKrdJBeopNL0zcYtFlvRTcEdYuI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database1_log.ldf" size="8388608" writeableType="applicationData">
@@ -95,7 +95,25 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>8RCOAr7EOl28CPAFUUvHkJ2Dlqhc7WiG0w5f+WzdhhU=</dsig:DigestValue>
+      <dsig:DigestValue>DhPnMSinI6hh3A05fvH5CWWzJpHH96fv8oEetj+Dx3U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Database2.mdf" size="8388608" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>mi3Gf41D2Td7J/XcgKS+4ttGqG/VGvvsJ79nYpxr4KU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Database2_log.ldf" size="8388608" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>HoR5uD2R7rtLG5xGt/Jy8Tf4TX8NXaNUozm/Rrk8XqU=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
